@@ -7,15 +7,25 @@
           <li v-for="(postt,index)  in posttest" :key="postt._id">
              <p>{{postt.title}} {{postt.firstname}}</p>
              <p>{{postt.content}}</p>
-             <p>{{postt.likes}}</p>
-             <p v-for="like in postt.likes ">{{likes.length}} {{likes.firstname}} </p> 
+             <p>{{postt.likes.length}}</p>
+             <p v-for="like in postt.likes "> {{likes.firstname}} </p> 
             
              <p v-for="com in postt.comments ">{{com.content}}{{com.firstname}}  </p>
              
             
-            <button @click=like>like</button>
-            <button @click="comment">post comment</button>
-          
+            <button @click="like(postt._id)">like</button>
+             <div>
+             <label for="commentaire">commentaire : </label>
+                <input
+                type="text"
+                id="commentaire"
+                v-model="commentaire[index]"
+                placeholder="Votre commentaire"
+                required
+                />
+            
+            <button @click="comment(postt._id,index)">post comment</button>
+          </div>
             <!-- <p>{{postt._id}} </p> -->
             
           </li>
@@ -28,6 +38,8 @@
 </template>
 
 <script>
+
+
 export default {
   data() {
     return {
@@ -39,10 +51,14 @@ export default {
       firstname:"David",
       posttest:[],
       likes:0,
+      commentaire:[],
 
     };
   },
    computed:{
+     commentaireindex(b){
+       return this.commentaire[b]
+     }
       
   },
 
@@ -53,6 +69,10 @@ export default {
 // Exemple: /posts?page=2&limit=10
 // pour obtenir la page 3 et 10 posts par
   methods: {
+
+    likeconsole(a) {
+      console.log(a)
+    },
     
     async recuperer() {
       const options = {
@@ -76,7 +96,7 @@ console.log(data)
     },
  
 
-async comment() {
+async comment(a,b) {
   
       const options = {
         method: "POST",
@@ -87,8 +107,8 @@ async comment() {
          body: JSON.stringify({
           
           
-          postId:"6282b13fb27c77001b8e5785",
-          content: "test commentaire nouveau"
+          postId:a,
+          content: this.commentaire[b]
           //  likes:1,
            
           
@@ -110,7 +130,7 @@ console.log(data)
 
       
     },
- async like() {
+ async like(a) {
   
       const options = {
         method: "POST",
@@ -121,7 +141,7 @@ console.log(data)
          body: JSON.stringify({
           
           
-          postId:"6282ae84b27c77001b8e5779",
+          postId:a,
           
            
           
