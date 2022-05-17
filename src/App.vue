@@ -9,6 +9,7 @@
 
     </div>
     <Deconnecter/>
+    <RecupUser/>
     <Recuperer/>
     <Poster/>
   </div>
@@ -20,6 +21,8 @@ import Login from './components/Login.vue'
 import Creation from './components/Creation.vue'
 import Recuperer from './components/Recuperer.vue'
 import Poster from './components/Poster.vue'
+import Deconnecter from './components/Deconnecter.vue'
+import RecupUser from './components/RecupUser.vue'
 
 export default {
   name: 'App',
@@ -29,6 +32,8 @@ export default {
     Creation,
     Recuperer,
     Poster,
+    Deconnecter,
+    RecupUser,
 },
  data() {
     return {
