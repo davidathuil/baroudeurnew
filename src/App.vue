@@ -1,10 +1,48 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <div>
+    <div v-if="isDisplay">
+  <Login/>
+    </div>
+  <button @click="isDisplay=!isDisplay"> Inscription</button>
+   <div v-if="!isDisplay">
+  <Creation/>
+
+    </div>
+    <Recuperer/>
+    <Poster/>
+  </div>
 </template>
+
+<script>
+import Page from './components/Page.vue'
+import Login from './components/Login.vue'
+import Creation from './components/Creation.vue'
+import Recuperer from './components/Recuperer.vue'
+import Poster from './components/Poster.vue'
+
+export default {
+  name: 'App',
+  components: {
+    Page,
+    Login,
+    Creation,
+    Recuperer,
+    Poster,
+},
+ data() {
+    return {
+      isDisplay:true,
+    };
+  },
+
+computed:{
+  ShowCreation(){
+    this.isDisplay = !this.isDisplay;
+
+  }
+}
+}
+</script>
 
 <style>
 #app {
@@ -13,18 +51,6 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-}
-
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
+  margin-top: 60px;
 }
 </style>
