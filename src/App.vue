@@ -8,6 +8,7 @@
   <Creation/>
 
     </div>
+    <Deconnecter/>
     <Recuperer/>
     <Poster/>
   </div>

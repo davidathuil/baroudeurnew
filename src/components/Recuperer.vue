@@ -3,6 +3,7 @@
     <!-- Formulaire de connexion -->
    
 <button @click="recuperer">recuperer</button>
+
      <ul>
           <li v-for="(postt,index)  in posttest" :key="postt._id">
              <p>{{postt.title}} {{postt.firstname}}</p>

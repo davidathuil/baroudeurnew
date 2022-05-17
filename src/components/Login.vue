@@ -36,6 +36,8 @@
       Token: {{ token }}
     </p>
     <p v-else-if="result === false" class="error">Connexion échouée</p>
+    
+
   </div>
 </template>
 
@@ -79,6 +81,8 @@ console.log(data);
          localStorage.setItem("token",this.token);
       }
     },
+
+    
   },
 };
 </script>

@@ -34,6 +34,7 @@
             </div>
  
 <button @click="poster">Poster</button>
+
      
 
     
