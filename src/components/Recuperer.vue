@@ -57,12 +57,17 @@ export default {
     };
   },
    computed:{
-     commentaireindex(b){
-       return this.commentaire[b]
-     }
+      filteredpostuser() {
+    let postuser = this.posttest
+    
+    postuser = postuser.filter((item) => {
+      return (item.userId == "6282762cb27c77001b8e5710")
+    })
+    
+    return postuser;
       
   },
-
+},
   
 // Query parameters:
 // page: Number (par défaut: 0)
