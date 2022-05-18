@@ -1,38 +1,34 @@
 <template>
   <div>
     <NavBar />
-<nav>
+
     <router-link to="/"> Fil d'actu </router-link>
     <router-link to="/Profil"> Profil </router-link>
     <router-link to="/Login"> Login </router-link>
-</nav>    
-<router-view/>
+
+    <div v-if="isDisplay">
+      <Login />
+    </div>
+    <button @click="isDisplay = !isDisplay">Inscription</button>
+    <div v-if="!isDisplay">
+      <Creation />
+    </div>
     <Deconnecter />
-    <RecupUser />
-    <Recuperer />
-    <Poster />
   </div>
 </template>
 
 <script>
-import Page from "./components/Page.vue";
-
-import Recuperer from "./components/Recuperer.vue";
-import Poster from "./components/Poster.vue";
-import Deconnecter from "./components/Deconnecter.vue";
-import RecupUser from "./components/RecupUser.vue";
-import NavBar from "./components/NavBar.vue";
+import Login from "../components/Login.vue";
+import Creation from "../components/Creation.vue";
+import Deconnecter from "../components/Deconnecter.vue";
+import NavBar from "../components/NavBar.vue";
 
 export default {
   name: "App",
   components: {
-    Page,
     Login,
     Creation,
-    Recuperer,
-    Poster,
     Deconnecter,
-    RecupUser,
     NavBar,
   },
   data() {

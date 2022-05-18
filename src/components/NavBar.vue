@@ -40,7 +40,9 @@
 export default {};
 </script>
 
-<style>
+<style scoped>
+
+
 @import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Montserrat:wght@300&family=Passion+One&family=Roboto:wght@100;500&family=Square+Peg&display=swap');
 
 #title {
