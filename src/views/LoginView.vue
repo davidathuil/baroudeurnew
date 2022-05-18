@@ -1,11 +1,5 @@
 <template>
-  <div>
-    
-
-    <router-link to="/"> Fil d'actu </router-link>
-    <router-link to="/Profil"> Profil </router-link>
-    <router-link to="/Login"> Login </router-link>
-
+  <div id="log">
     <div v-if="isDisplay">
       <Login />
     </div>
@@ -15,6 +9,10 @@
     </div>
     <Deconnecter />
   </div>
+
+  <video autoplay loop>
+    <source src="../assets/video.mp4" />
+  </video>
 </template>
 
 <script>
@@ -22,14 +20,12 @@ import Login from "../components/Login.vue";
 import Creation from "../components/Creation.vue";
 import Deconnecter from "../components/Deconnecter.vue";
 
-
 export default {
   name: "App",
   components: {
     Login,
     Creation,
     Deconnecter,
-    
   },
   data() {
     return {
@@ -55,5 +51,24 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+
+#log {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.507);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+  width: 30%;
+  align-items: center;
+  margin-top: 13%;
+  margin-left: 36%;
+}
+
+video {
+  resize: both;
+  width: 100%;
+  height: 100%;
 }
 </style>
