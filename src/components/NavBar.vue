@@ -4,6 +4,7 @@
 </head>
 
 <body>
+  <!-- TITRE ET BACKGROUND -->
   <div id="title">
     Le Petit Baroudeur
   </div>

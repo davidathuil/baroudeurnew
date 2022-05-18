@@ -6,46 +6,47 @@
     <router-link to="/Profil"> Profil </router-link>
     <router-link to="/Login"> Login </router-link>
 </nav>    
-<router-view/>
+<!-- 
     <Deconnecter />
     <RecupUser />
     <Recuperer />
-    <Poster />
+    <Poster /> -->
+    <router-view/>
   </div>
 </template>
 
-<script>
-import Page from "./components/Page.vue";
+// <script>
+// import Page from "./components/Page.vue";
 
-import Recuperer from "./components/Recuperer.vue";
-import Poster from "./components/Poster.vue";
-import Deconnecter from "./components/Deconnecter.vue";
-import RecupUser from "./components/RecupUser.vue";
-import NavBar from "./components/NavBar.vue";
+// import Recuperer from "./components/Recuperer.vue";
+// import Poster from "./components/Poster.vue";
+// import Deconnecter from "./components/Deconnecter.vue";
+// import RecupUser from "./components/RecupUser.vue";
+// import NavBar from "./components/NavBar.vue";
 
 export default {
   name: "App",
   components: {
-    Page,
-    Login,
-    Creation,
-    Recuperer,
-    Poster,
-    Deconnecter,
-    RecupUser,
-    NavBar,
+    
+    // Login,
+    // Creation,
+    // Recuperer,
+    // Poster,
+    // Deconnecter,
+    // RecupUser,
+    // NavBar,
   },
   data() {
     return {
-      isDisplay: true,
+      // isDisplay: true,
     };
   },
 
-  computed: {
-    ShowCreation() {
-      this.isDisplay = !this.isDisplay;
-    },
-  },
+  // computed: {
+  //   ShowCreation() {
+  //     this.isDisplay = !this.isDisplay;
+  //   },
+  // },
 };
 </script>
 

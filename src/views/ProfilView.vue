@@ -34,11 +34,27 @@
     Mon actu    
     </div>
 
+<RecupUser />
+
   </section>
+
+
+  
+
 </template>
 
 <script>
+
+import RecupUser from "../components/RecupUser.vue";
+
 export default {
+  
+     name: "App",
+  components: {
+   
+    RecupUser,
+   
+  },
   data() {
     return {
       

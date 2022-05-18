@@ -1,6 +1,6 @@
 <template>
   <div>
-    <NavBar />
+    
 
     <router-link to="/"> Fil d'actu </router-link>
     <router-link to="/Profil"> Profil </router-link>
@@ -21,7 +21,7 @@
 import Login from "../components/Login.vue";
 import Creation from "../components/Creation.vue";
 import Deconnecter from "../components/Deconnecter.vue";
-import NavBar from "../components/NavBar.vue";
+
 
 export default {
   name: "App",
@@ -29,7 +29,7 @@ export default {
     Login,
     Creation,
     Deconnecter,
-    NavBar,
+    
   },
   data() {
     return {

@@ -1,96 +1,58 @@
 <template>
-  <section>
-  <br>
-  <br>
-  <br>
-    <div>
-      <input type = "text" placeholder = "recherche">
-    </div>
+  <div>
+    <NavBar />
+    <nav>
+      <router-link to="/"> Fil d'actu </router-link>
+      <router-link to="/Profil"> Profil </router-link>
+      <router-link to="/Login"> Login </router-link>
+    </nav>
 
-    <div class="home">
-      <h4>Mon profil</h4> 
-    </div>
-
-    <div class="input-container">
-                <label for="title">title : </label>
-                <input
-                type="text"
-                id="title"
-                v-model="title"
-                placeholder="Votre Titre"
-                required
-                />
-            </div>
-
-    <div id="monPost"> 
-      Poster une actu
-    </div>
- <input type ="text" id="content" v-model="content" placeholder="Je poste mon actu">
-    <div>
-     <button @click="ajouter" id="ajouter"> Ajouter poste/photo </button>
-    </div>
-
-    <div id="actu">
-    Mon actu    
-    </div>
-
-  </section>
+     <Recuperer />
+    <Deconnecter />
+    <Poster />
+  </div>
 </template>
 
 <script>
+
+import Poster from "../components/Poster.vue";
+import Deconnecter from "../components/Deconnecter.vue";
+import NavBar from "../components/NavBar.vue";
+import Recuperer from "../components/Recuperer.vue";
 export default {
+  name: "App",
+  components: {
+    // Login,
+    // Creation,
+    Recuperer,
+    Poster,
+    Deconnecter,
+    // RecupUser,
+    NavBar,
+  },
   data() {
     return {
-      
-      token: localStorage.getItem("token"),
-      title: "",
-      content:"",
-      
-      idPost:"",
-
+      isDisplay: true,
     };
   },
-  
-  methods: {
-    async poster() {
-     
 
-      const options = {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": "bearer " + localStorage.getItem("token")
-        },
-         body: JSON.stringify({
-          title: this.title,
-          content: this.content,
-          
-          
-        }),
-      
-       
-      };
-
-      const response = await fetch(
-        "https://social-network-api.osc-fr1.scalingo.io/demo/post",
-        options
-      );
-
-      const data = await response.json();
-      
-     
- console.log(response);
- console.log(data);
-      
+  computed: {
+    ShowCreation() {
+      this.isDisplay = !this.isDisplay;
     },
   },
 };
 </script>
 
-<style scope> 
-#content { 
-padding: 50px 130px;
-border-top-left-radius: 20px;
-border-bottom-right-radius: 20px;
+<style>
+* {
+  margin: 0;
+}
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
 }
 </style>
