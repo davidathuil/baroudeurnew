@@ -23,13 +23,35 @@
         
         <li id="meteo">
           Vérifiez la météo avant de réserver !  
+           <form @submit.prevent="Meteoreche" >
           <input
             id="destinationMeteo"
             type="text"
+            v-model="Recherche"
             placeholder="Votre destination"
           />
+          <input id="validation" type="submit"/> 
+          </form>
         </li>
-        <li></li>
+        
+ 
+        
+          <li v-for="result in results" :key="result.dt"> 
+        
+            <p>Temp {{result.main.temp}}</p>
+           
+            <!-- <p>Vitesse du vent {{result.wind.speed}} </p>
+            <p>Description {{result.weather[0].description}} </p> -->
+           
+            <img :src="'http://openweathermap.org/img/w/'+result.weather[0].icon+'.png'"/>
+          </li>
+              
+    
+
+
+
+
+        
       </ul>
     </nav>
   </div>
@@ -37,8 +59,41 @@
 </template>
 
 <script>
+export default{
 
-export default {};
+data() {
+    return {
+      Recherche:"",
+      results: [],
+        Coordon:{
+          lat: null,
+          lon: null
+      }
+
+    };
+  },
+
+
+  /* Methodes */
+  methods: { 
+
+ async  Meteoreche() {
+ 
+    //   +this.Recherche 
+      let response = await fetch("http://api.openweathermap.org/geo/1.0/direct?q="+this.Recherche+"&appid=9f5d0a8ada32be8e3a27f796a520e7fd");
+      
+      let donnees = await response.json();
+      console.log(response);
+      console.log(donnees);
+      this.Coordon.lat = donnees[0].lat
+      this.Coordon.lon =donnees[0].lon;
+       let response1 = await fetch("https://api.openweathermap.org/data/2.5/weather?lat="+this.Coordon.lat+"&lon="+this.Coordon.lon+"&units=metric&appid=9f5d0a8ada32be8e3a27f796a520e7fd");
+      console.log(response1);
+      let donnees1 = await response1.json();
+      console.log(response1);
+      this.results = donnees1.list;
+ },
+  }
 </script>
 
 <style scoped>
