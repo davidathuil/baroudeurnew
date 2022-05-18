@@ -1,31 +1,33 @@
 <template>
   <div>
-    <div v-if="isDisplay">
-  <Login/>
-    </div>
-  <button @click="isDisplay=!isDisplay"> Inscription</button>
-   <div v-if="!isDisplay">
-  <Creation/>
+    <NavBar />
 
+    <div v-if="isDisplay">
+      <Login />
     </div>
-    <Deconnecter/>
-    <RecupUser/>
-    <Recuperer/>
-    <Poster/>
+    <button @click="isDisplay = !isDisplay">Inscription</button>
+    <div v-if="!isDisplay">
+      <Creation />
+    </div>
+    <Deconnecter />
+    <RecupUser />
+    <Recuperer />
+    <Poster />
   </div>
 </template>
 
 <script>
-import Page from './components/Page.vue'
-import Login from './components/Login.vue'
-import Creation from './components/Creation.vue'
-import Recuperer from './components/Recuperer.vue'
-import Poster from './components/Poster.vue'
-import Deconnecter from './components/Deconnecter.vue'
-import RecupUser from './components/RecupUser.vue'
+import Page from "./components/Page.vue";
+import Login from "./components/Login.vue";
+import Creation from "./components/Creation.vue";
+import Recuperer from "./components/Recuperer.vue";
+import Poster from "./components/Poster.vue";
+import Deconnecter from "./components/Deconnecter.vue";
+import RecupUser from "./components/RecupUser.vue";
+import NavBar from "./components/NavBar.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     Page,
     Login,
@@ -34,20 +36,20 @@ export default {
     Poster,
     Deconnecter,
     RecupUser,
-},
- data() {
+    NavBar,
+  },
+  data() {
     return {
-      isDisplay:true,
+      isDisplay: true,
     };
   },
 
-computed:{
-  ShowCreation(){
-    this.isDisplay = !this.isDisplay;
-
-  }
-}
-}
+  computed: {
+    ShowCreation() {
+      this.isDisplay = !this.isDisplay;
+    },
+  },
+};
 </script>
 
 <style>
