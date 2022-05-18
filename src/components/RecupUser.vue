@@ -50,6 +50,38 @@
 
 <button @click="modifUser">Modif user</button>    
 
+<h1>POST utilisateur</h1>
+     <ul>
+          <li v-for="(postt,index)  in filteredpostuser" :key="postt._id">
+             <p>{{postt.title}} {{postt.firstname}}</p>
+             <p>{{postt.content}}</p>
+             <p>{{postt.likes.length}}</p>
+             <p v-for="like in postt.likes "> {{likes.firstname}} </p> 
+            
+             <p v-for="com in postt.comments ">{{com.content}}{{com.firstname}}  </p>
+             
+            
+            <button @click="like(postt._id)">like</button>
+             <div>
+             <label for="commentaire">commentaire : </label>
+                <input
+                type="text"
+                id="commentaire"
+                v-model="commentaire[index]"
+                placeholder="Votre commentaire"
+                required
+                />
+            
+            <button @click="comment(postt._id,index)">post comment</button>
+          </div>
+            <!-- <p>{{postt._id}} </p> -->
+            
+          </li>
+        </ul>
+
+
+
+
    </div>
   
 </template>
@@ -69,11 +101,24 @@ export default {
       posttest:[],
       likes:0,
       commentaire:[],
-      users:[],  
+      users:[],
+      iduser:""  
     };
   },
    
-
+computed:{
+      filteredpostuser() {
+    let postuser = this.posttest
+    
+    postuser = postuser.filter((item) => {
+      return (item.userId == this.iduser)
+      
+    })
+    
+    return postuser;
+      
+  },
+},
   
   methods: {
 
@@ -95,6 +140,7 @@ export default {
 
       const data = await response.json();
       this.users = data;
+      this.iduser=data._id
 console.log(response),
 console.log(data)
       
@@ -131,7 +177,26 @@ console.log(data)
       
     },
 
+ async recuperer() {
+      const options = {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        
+      };
 
+      const response = await fetch(
+        "https://social-network-api.osc-fr1.scalingo.io/demo/posts",
+        options
+      );
+
+      const data = await response.json();
+      this.posttest = data.posts;
+console.log(response),
+console.log(data)
+      
+    },
 
 
 
@@ -140,8 +205,9 @@ console.log(data)
 
 
  },
-
+mounted() {this.recuperer()},
 mounted() {this.recupererUser()},
+
 
 };
  
