@@ -42,14 +42,14 @@ export default {
 #mainContainer {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   text-align: center;
-  color: #2c3e50;
+  color: white;
   margin-top: 60px;
 }
 
 .input-container {
   margin: 10px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 .input-container label {
@@ -67,7 +67,7 @@ export default {
 .login-button {
   margin: 20px;
   padding: 10px;
-  background-color: grey;
+  background-color: black;
   color: white;
   border: 0px;
   border-radius: 5px;

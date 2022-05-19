@@ -193,7 +193,7 @@ mounted() {this.recuperer()},
 .input-container {
   margin: 10px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 .input-container label {
@@ -211,7 +211,7 @@ mounted() {this.recuperer()},
 .login-button {
   margin: 20px;
   padding: 10px;
-  background-color: grey;
+  background-color: black;
   color: white;
   border: 0px;
   border-radius: 5px;

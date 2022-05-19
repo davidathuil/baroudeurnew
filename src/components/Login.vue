@@ -1,10 +1,21 @@
 <template>
+
+
+
   <div id="mainContainer">
+
+    
+
 <!-- <video autoplay loop id="bgvid">
     <source src="../assets/video.mp4" type="video/mp4" >
 </video> -->
     <!-- Formulaire de connexion -->
     <form @submit.prevent="login">
+      <center><img src="../assets/logo.png"></center>
+      <h1>Le Petit Baroudeur</h1>
+      <br>
+      <h2> LOG IN </h2>
+      <br>
       <div class="input-container">
         <label for="emailInput">Email : </label>
         <input
@@ -92,13 +103,13 @@ console.log(data);
   font-family: Avenir, Helvetica, Arial, sans-serif;
   text-align: center;
   color: white;
-  margin-top: 60px;
+ 
 }
 
 .input-container {
   margin: 10px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 .input-container label {
@@ -116,7 +127,7 @@ console.log(data);
 .login-button {
   margin: 20px;
   padding: 10px;
-  background-color: grey;
+  background-color: black;
   color: white;
   border: 0px;
   border-radius: 5px;
@@ -145,6 +156,19 @@ console.log(data);
     background-size: cover;
     background-position: center;
     overflow: hidden;
+}
+
+h1 {
+      margin-top: -50px;
+    margin-bottom: 30px;
+}
+
+#passwordInput {
+  text-align: center;
+}
+
+#emailInput {
+  text-align: center;
 }
 
 </style>

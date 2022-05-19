@@ -32,20 +32,13 @@
           />
           <input id="validation" @click="Meteoreche" type="submit"/> 
           </form>
-        </li>
         
- 
-        
-          <li v-for="result in results" > 
-        
-            <p>Temp {{result}}</p>
-           
-            <!-- <p>Vitesse du vent {{result.wind.speed}} </p>
-            <p>Description {{result.weather[0].description}} </p> -->
-           
-            <img :src="'http://openweathermap.org/img/w/'+result.weather[0].icon+'.png'"/>
           </li>
-              
+          <li v-if="results!==null">
+              <p>{{results}}</p>
+            <img :src="'http://openweathermap.org/img/w/'+icon+'.png'"/>
+          </li>
+            
     
 
 
@@ -54,19 +47,6 @@
         
       </ul>
     </nav>
-
-<h1>test meteo</h1>
-<ul>
-          <li v-for="result in results" > 
-        
-            <p>Temp {{result}}</p>
-           
-            <!-- <p>Vitesse du vent {{result.wind.speed}} </p>
-            <p>Description {{result.weather[0].description}} </p> -->
-           
-            <img :src="'http://openweathermap.org/img/w/'+result.weather[0].icon+'.png'"/>
-          </li>
-          </ul>
   </div>
 </body>
 </template>
@@ -77,7 +57,8 @@ export default{
 data() {
     return {
       Recherche:"",
-      results: [],
+      results: null,
+      icon:[],
         Coordon:{
           lat: null,
           lon: null
@@ -104,7 +85,10 @@ data() {
       console.log(response1);
       let donnees1 = await response1.json();
       console.log(donnees1);
-      this.results = donnees1.list;
+      this.results = donnees1.main.temp;
+      this.icon = donnees1.weather[0].icon;
+      console.log( this.results);
+      console.log( this.icon);
  }
   }
 }
