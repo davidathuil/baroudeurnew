@@ -30,15 +30,15 @@
             v-model="Recherche"
             placeholder="Votre destination"
           />
-          <input id="validation" type="submit"/> 
+          <input id="validation" @click="Meteoreche" type="submit"/> 
           </form>
         </li>
         
  
         
-          <li v-for="result in results" :key="result.dt"> 
+          <li v-for="result in results" > 
         
-            <p>Temp {{result.main.temp}}</p>
+            <p>Temp {{result}}</p>
            
             <!-- <p>Vitesse du vent {{result.wind.speed}} </p>
             <p>Description {{result.weather[0].description}} </p> -->
@@ -54,6 +54,19 @@
         
       </ul>
     </nav>
+
+<h1>test meteo</h1>
+<ul>
+          <li v-for="result in results" > 
+        
+            <p>Temp {{result}}</p>
+           
+            <!-- <p>Vitesse du vent {{result.wind.speed}} </p>
+            <p>Description {{result.weather[0].description}} </p> -->
+           
+            <img :src="'http://openweathermap.org/img/w/'+result.weather[0].icon+'.png'"/>
+          </li>
+          </ul>
   </div>
 </body>
 </template>
@@ -90,10 +103,11 @@ data() {
        let response1 = await fetch("https://api.openweathermap.org/data/2.5/weather?lat="+this.Coordon.lat+"&lon="+this.Coordon.lon+"&units=metric&appid=9f5d0a8ada32be8e3a27f796a520e7fd");
       console.log(response1);
       let donnees1 = await response1.json();
-      console.log(response1);
+      console.log(donnees1);
       this.results = donnees1.list;
- },
+ }
   }
+}
 </script>
 
 <style scoped>
