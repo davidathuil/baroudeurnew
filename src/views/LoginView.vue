@@ -3,7 +3,10 @@
     <div v-if="isDisplay">
       <Login />
     </div>
-    <button @click="isDisplay = !isDisplay">Inscription</button>
+<br>
+    Nouveau sur le site? inscris toi ! 
+    <button id="inscriptionBtn" @click="isDisplay = !isDisplay">Inscription</button>
+    
     <div v-if="!isDisplay">
       <Creation />
     </div>
@@ -50,7 +53,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color:white;
 }
 
 #log {
@@ -62,7 +65,7 @@ export default {
   color: white;
   width: 30%;
   align-items: center;
-  margin-top: 13%;
+  margin-top: 2%;
   margin-left: 36%;
 }
 
@@ -70,5 +73,15 @@ video {
   resize: both;
   width: 100%;
   height: 100%;
+}
+
+#inscriptionBtn {
+  margin: 20px;
+  padding: 10px;
+  background-color: black;
+  color: white;
+  border: 0px;
+  border-radius: 5px;
+  font-size: 15px;
 }
 </style>
