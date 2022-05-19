@@ -5,6 +5,7 @@
 <button @click="recupererUser">recuperer user</button>
 
      <ul>
+     
           <li v-for="(user,index)  in users" :key="user._id">
            <p>{{user}} </p>
              <p>{{user.firstname}} </p>
@@ -16,6 +17,8 @@
             
           </li>
         </ul>
+         <button  @click="isDisplay = !isDisplay">Modifcompte</button>
+        <div  v-if="isDisplay">
         <div>
  <label for="firstnamemodif">Prénom modif: </label>
                 <input
@@ -47,12 +50,13 @@
           required
         />
       </div>
-
-<button @click="modifUser">Modif user</button>    
+      <button @click="modifUser"> SEnd Modif user</button> 
+</div>
+   
 
 <h1>POST utilisateur</h1>
      <ul>
-          <li v-for="(postt,index)  in filteredpostuser" :key="postt._id">
+          <li v-for="(postt,index)  in posttest" :key="postt._id">
              <p>{{postt.title}} {{postt.firstname}}</p>
              <p>{{postt.content}}</p>
              <p>{{postt.likes.length}}</p>
@@ -99,6 +103,7 @@ export default {
       lastname:"",
       firstname:"",
       posttest:[],
+      isDisplay:false,
       likes:0,
       commentaire:[],
       users:[],
@@ -145,8 +150,14 @@ console.log(response),
 console.log(data)
       
     },
+    modifIsdisplay(){
+      
+ if (this.isDisplay = true) {return this.isDisplay = false}
+ else {return this.isDisplay =true}
+    },
  
 async modifUser() {
+
       const options = {
         method: "PUT",
         headers: {
