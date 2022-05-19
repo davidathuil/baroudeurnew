@@ -13,7 +13,7 @@
 
 <script>
 import Poster from "../components/Poster.vue";
-import Deconnecter from "../components/Deconnecter.vue";
+import Deconnect from "../components/Deconnect.vue";
 import NavBar from "../components/NavBar.vue";
 import Recuperer from "../components/Recuperer.vue";
 export default {
@@ -23,7 +23,7 @@ export default {
     // Creation,
     Recuperer,
     Poster,
-    Deconnecter,
+    Deconnect,
     // RecupUser,
     NavBar,
   },

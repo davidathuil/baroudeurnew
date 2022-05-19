@@ -90,6 +90,7 @@ console.log(data);
       if (data.success === true) {
         this.token = data.token;
          localStorage.setItem("token",this.token);
+         this.$router.push(  '/' );
       }
     },
 

@@ -21,14 +21,14 @@
 <script>
 import Login from "../components/Login.vue";
 import Creation from "../components/Creation.vue";
-import Deconnecter from "../components/Deconnecter.vue";
+import Deconnect from "../components/Deconnect.vue";
 
 export default {
   name: "App",
   components: {
     Login,
     Creation,
-    Deconnecter,
+    Deconnect,
   },
   data() {
     return {
