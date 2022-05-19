@@ -1,5 +1,5 @@
 <template>
-  <div id="mainContainer">
+  <div id="mainContainerDeco">
     <!-- Formulaire de connexion -->
 
     <button @click="deconnecter">deconnecter</button>
@@ -23,11 +23,13 @@ export default {
 </script>
 
 <style>
-#mainContainer {
+#mainContainerDeco {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   text-align: center;
   color: white;
   margin-top: 60px;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .input-container {

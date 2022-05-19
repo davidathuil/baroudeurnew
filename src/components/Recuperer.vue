@@ -4,8 +4,8 @@
 
     <button @click="recuperer">recuperer</button>
 
-    <ul>
-      <li v-for="(postt, index) in posttest" :key="postt._id">
+    <div id="recupUserContent">
+      <div v-for="(postt, index) in posttest" :key="postt._id" id="editPost">
         <p>{{ postt.title }} {{ postt.firstname }}</p>
         <p>{{ postt.content }}</p>
         <p>{{ postt.likes.length }}</p>
@@ -29,8 +29,8 @@
           <button @click="comment(postt._id, index)">post comment</button>
         </div>
         <!-- <p>{{postt._id}} </p> -->
-      </li>
-    </ul>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -150,7 +150,8 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  position: absolute;
+  padding: 35%;
 }
 
 .input-container {

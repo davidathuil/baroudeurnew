@@ -9,9 +9,7 @@
     <Deconnecter />
     <Poster />
 
-    <div>
-      <footer id="footer">&copy Le petit Baroudeur</footer>
-    </div>
+    <footer id="footer">&copy Le petit Baroudeur</footer>
   </div>
 </template>
 
@@ -74,5 +72,9 @@ export default {
   padding: 2%;
   position: unset;
   margin-top: 200%;
+}
+#btn {
+  font-family: initial;
+  letter-spacing: 1.8px;
 }
 </style>

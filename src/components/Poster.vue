@@ -1,5 +1,5 @@
 <template>
-  <div id="mainContainer">
+  <div id="mainContainerPoster">
     <!-- Formulaire de connexion -->
     <div class="input-container">
       <label for="title">title : </label>
@@ -82,12 +82,13 @@ export default {
 </script>
 
 <style>
-#mainContainer {
+#mainContainerPoster {
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  text-align: center;
+
   color: #2c3e50;
-  margin-top: 60px;
+
   position: absolute;
+  padding-left: 33%;
 }
 
 .input-container {
