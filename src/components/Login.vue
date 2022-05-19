@@ -4,7 +4,7 @@
     <source src="../assets/video.mp4" type="video/mp4" >
 </video> -->
     <!-- Formulaire de connexion -->
-    <form @submit.prevent="login">
+    <form id="formulaire" @submit.prevent="login">
       <center><img src="../assets/logo.png" /></center>
       <h1>Le Petit Baroudeur</h1>
       <br />
@@ -79,6 +79,7 @@ export default {
       if (data.success === true) {
         this.token = data.token;
         localStorage.setItem("token", this.token);
+        this.$router.push("/");
       }
     },
   },
@@ -155,5 +156,10 @@ h1 {
 
 #emailInput {
   text-align: center;
+}
+
+#formulaire {
+  z-index: 10000;
+  position: relative;
 }
 </style>

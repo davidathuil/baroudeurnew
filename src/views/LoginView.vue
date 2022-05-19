@@ -21,14 +21,14 @@
 <script>
 import Login from "../components/Login.vue";
 import Creation from "../components/Creation.vue";
-import Deconnecter from "../components/Deconnecter.vue";
+import Deconnect from "../components/Deconnect.vue";
 
 export default {
   name: "App",
   components: {
     Login,
     Creation,
-    Deconnecter,
+    Deconnect,
   },
   data() {
     return {
@@ -73,6 +73,7 @@ video {
   resize: both;
   width: 100%;
   height: 100%;
+  
 }
 
 #inscriptionBtn {
@@ -83,5 +84,6 @@ video {
   border: 0px;
   border-radius: 5px;
   font-size: 15px;
+  cursor: pointer;
 }
 </style>

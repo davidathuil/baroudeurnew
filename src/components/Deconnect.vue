@@ -1,41 +1,25 @@
 <template>
   <div id="mainContainer">
     <!-- Formulaire de connexion -->
-   
 
-<button @click="deconnecter">deconnecter</button>
-    
+    <button @click="deconnecter">deconnecter</button>
   </div>
 </template>
 
 <script>
-
-
 export default {
   data() {
     return {
-      
-       token: localStorage.getItem("token"),
-     
-
+      token: localStorage.getItem("token"),
     };
   },
-   
+
   methods: {
-
-   
- deconnecter(){
-
+    deconnecter() {
       localStorage.removeItem("token");
-    }
- 
- 
- },
-
-
+    },
+  },
 };
- 
-
 </script>
 
 <style>
