@@ -1,27 +1,27 @@
 <template>
-  <div id="mainContainer">
+  <div id="mainContainerCreation">
     <!-- Formulaire de connexion -->
     <form @submit.prevent="register">
-        <div class="input-container">
-                <label for="firstname">Prénom : </label>
-                <input
-                type="text"
-                id="firstname"
-                v-model="firstname"
-                placeholder="david"
-                required
-                />
-            </div>
-            <div class="input-container">
-                <label for="lastname">lastname : </label>
-                <input
-                type="text"
-                id="lastname"
-                v-model="lastname"
-                placeholder="athuil"
-                required
-                />
-            </div>
+      <div class="input-container">
+        <label for="firstname">Prénom : </label>
+        <input
+          type="text"
+          id="firstname"
+          v-model="firstname"
+          placeholder="david"
+          required
+        />
+      </div>
+      <div class="input-container">
+        <label for="lastname">lastname : </label>
+        <input
+          type="text"
+          id="lastname"
+          v-model="lastname"
+          placeholder="athuil"
+          required
+        />
+      </div>
 
       <div class="input-container">
         <label for="emailInput">Email : </label>
@@ -65,9 +65,8 @@ export default {
       password: "test",
       result: null,
       token: "",
-      lastname:"Athuil",
-      firstname:"David",
-
+      lastname: "Athuil",
+      firstname: "David",
     };
   },
 
@@ -81,8 +80,8 @@ export default {
         body: JSON.stringify({
           email: this.email,
           password: this.password,
-          lastname:this.lastname,
-          firstname:this.firstname,
+          lastname: this.lastname,
+          firstname: this.firstname,
         }),
       };
 
@@ -103,10 +102,10 @@ export default {
 </script>
 
 <style>
-#mainContainer {
+#mainContainerCreation {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   text-align: center;
-  color: white;
+  color: black;
   margin-top: 60px;
 }
 
