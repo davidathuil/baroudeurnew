@@ -172,6 +172,7 @@ h1 {
 }
 
 #formulaire {
+ 
   z-index: 10000;
   position: relative;
 }

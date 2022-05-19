@@ -4,13 +4,14 @@
       <Login />
     </div>
 <br>
-    Nouveau sur le site? inscris toi ! 
+<div id="inscription">
+    Nouveau sur le site? inscris toi ! >>> 
     <button id="inscriptionBtn" @click="isDisplay = !isDisplay">Inscription</button>
-    
+    </div>
     <div v-if="!isDisplay">
       <Creation />
     </div>
-    <Deconnecter />
+   
   </div>
 
   <video autoplay loop>
@@ -67,6 +68,7 @@ export default {
   align-items: center;
   margin-top: 2%;
   margin-left: 36%;
+  z-index:10000;
 }
 
 video {
@@ -85,5 +87,10 @@ video {
   border-radius: 5px;
   font-size: 15px;
   cursor: pointer;
+}
+
+#inscription {
+  position:relative;
+  z-index: 10000;
 }
 </style>
