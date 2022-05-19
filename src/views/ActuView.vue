@@ -5,9 +5,9 @@
     <div id="logInAcc">
       <button id="btn">Connexion</button>
     </div>
-    <Recuperer />
+    <Recuperer :emitprop="this.test"  ></Recuperer>
     <Deconnecter />
-    <Poster />
+    <Poster @uptadepost="recuperer" ></Poster>
 
     <footer id="footer">&copy Le petit Baroudeur</footer>
   </div>
@@ -29,9 +29,14 @@ export default {
     // RecupUser,
     NavBar,
   },
+  props: {
+    emitprop: String,
+    
+  },
   data() {
     return {
       isDisplay: true,
+      test:"pasok",
     };
   },
 
@@ -41,12 +46,16 @@ export default {
     },
   },
 
-  // methods: { eventMouse
-  //   MouseEvent(){
-  // this.eventMouse.transform
+   methods: { 
+     recuperer(){
+   alert("coucou");
+   
+  
+   this.test="ok"
+   alert(this.test);
 
-  //   }
-  // }
+     }
+   }
 };
 </script>
 

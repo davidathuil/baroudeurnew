@@ -24,6 +24,7 @@
     </div>
 
     <button @click="poster">Ajouter</button>
+    <button @click="test">test</button>
   </div>
 </template>
 
@@ -41,17 +42,23 @@ export default {
       idPost: "",
     };
   },
-  computed: {
-    Nbrlike() {
-      this.like += 1;
-    },
-  },
+
+  emits:['uptadepost'],
+   
   // Query parameters:
   // page: Number (par défaut: 0)
   // limit: Number (par défaut: 20)
   // Exemple: /posts?page=2&limit=10
   // pour obtenir la page 3 et 10 posts par
   methods: {
+updtpostrecup(){
+this.$root.recuperer()
+},
+
+test(){
+  this.$emit('uptadepost');
+},
+
     async poster() {
       const options = {
         method: "POST",
@@ -62,7 +69,7 @@ export default {
         body: JSON.stringify({
           title: this.title,
           content: this.content,
-          likes: this.like,
+          
         }),
         // idPost:this.idPost,
       };
@@ -76,8 +83,11 @@ export default {
 
       console.log(response);
       console.log(data);
+      this.test();
+      
+      
     },
-  },
+  },                                                                            
 };
 </script>
 

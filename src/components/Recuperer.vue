@@ -1,8 +1,8 @@
 <template>
   <div id="mainContainerRecup">
     <!-- Formulaire de connexion -->
-
-    <button @click="recuperer">recuperer</button>
+<h1>coucou {{emitprop}}</h1>
+    <button @uptadepost="recuperer" @click="recuperer">recuperer</button>
 
     <div id="recupUserContent">
       <div v-for="(postt, index) in posttest" :key="postt._id" id="editPost">
@@ -31,11 +31,17 @@
         <!-- <p>{{postt._id}} </p> -->
       </div>
     </div>
+    
   </div>
 </template>
 
 <script>
 export default {
+
+  props:{
+        emitprop:String,
+       
+    },
   data() {
     return {
       email: "david_athuil@yahoo.fr",
@@ -60,15 +66,29 @@ export default {
       return postuser;
     },
   },
+  watch: {
+    emitprop: function (ok, pasok) {
+      alert("je suis la");
+      this.recuperer();
+    },
+  },
 
-  // Query parameters:
-  // page: Number (par défaut: 0)
-  // limit: Number (par défaut: 20)
-  // Exemple: /posts?page=2&limit=10
-  // pour obtenir la page 3 et 10 posts par
+
   methods: {
     likeconsole(a) {
       console.log(a);
+    },
+    recup() {
+      alert(this.emitprop);
+      if (this.emitprop="ok"){
+      alert("je suis la")};
+      this.recuperer
+    },
+
+    recuponevent(uptadepost){
+      if (uptadepost){
+        this.recuperer()
+      }
     },
 
     async recuperer() {
@@ -142,7 +162,11 @@ export default {
   mounted() {
     this.recuperer();
   },
-};
+//   mounted(){this.$root.$on('uptadepost', this.recuperer());
+// //     });
+// // },
+// },
+}
 </script>
 
 <style>
