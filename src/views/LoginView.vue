@@ -73,6 +73,7 @@ video {
   resize: both;
   width: 100%;
   height: 100%;
+  
 }
 
 #inscriptionBtn {
@@ -83,5 +84,6 @@ video {
   border: 0px;
   border-radius: 5px;
   font-size: 15px;
+  cursor: pointer;
 }
 </style>
