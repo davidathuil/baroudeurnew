@@ -3,17 +3,21 @@
     <NavBar />
     <nav></nav>
     <div id="logInAcc">
-      <button id="btn" @mouseover="mouseEvent">Connexion</button>
+      <button id="btn">Connexion</button>
     </div>
     <Recuperer />
     <Deconnecter />
     <Poster />
+
+    <div>
+      <footer id="footer">&copy Le petit Baroudeur</footer>
+    </div>
   </div>
 </template>
 
 <script>
 import Poster from "../components/Poster.vue";
-import Deconnecter from "../components/Deconnecter.vue";
+import Deconnect from "../components/Deconnect.vue";
 import NavBar from "../components/NavBar.vue";
 import Recuperer from "../components/Recuperer.vue";
 export default {
@@ -23,7 +27,7 @@ export default {
     // Creation,
     Recuperer,
     Poster,
-    Deconnecter,
+    Deconnect,
     // RecupUser,
     NavBar,
   },
@@ -59,13 +63,16 @@ export default {
   text-align: center;
   color: black;
 }
-#logInAcc :hover {
-  transform: translate(100px, 0);
+#logInAcc {
+  display: flex;
+  justify-content: flex-end;
 }
 
-#btn {
-  width: 150px;
-  height: 30px;
-  transition: transform 330ms ease-in-out;
+#footer {
+  background-color: black;
+  color: white;
+  padding: 2%;
+  position: unset;
+  margin-top: 200%;
 }
 </style>

@@ -67,9 +67,8 @@ export default {
       password: "test",
       result: null,
       token: "",
-      lastname:"Athuil",
-      firstname:"David",
-
+      lastname: "Athuil",
+      firstname: "David",
     };
   },
 
@@ -83,8 +82,8 @@ export default {
         body: JSON.stringify({
           email: this.email,
           password: this.password,
-          lastname:this.lastname,
-          firstname:this.firstname,
+          lastname: this.lastname,
+          firstname: this.firstname,
         }),
       };
 

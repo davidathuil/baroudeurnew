@@ -1,21 +1,15 @@
 <template>
-
-
-
-  <div id="mainContainer">
-
-    
-
-<!-- <video autoplay loop id="bgvid">
+  <div id="mainContainerLogIn">
+    <!-- <video autoplay loop id="bgvid">
     <source src="../assets/video.mp4" type="video/mp4" >
 </video> -->
     <!-- Formulaire de connexion -->
-    <form id="formulaire" @submit.prevent="login" >
-      <center><img src="../assets/logo.png"></center>
+    <form id="formulaire" @submit.prevent="login">
+      <center><img src="../assets/logo.png" /></center>
       <h1>Le Petit Baroudeur</h1>
-      <br>
-      <h2> LOG IN </h2>
-      <br>
+      <br />
+      <h2>LOG IN</h2>
+      <br />
       <div class="input-container">
         <label for="emailInput">Email : </label>
         <input
@@ -47,8 +41,6 @@
       Token: {{ token }}
     </p>
     <p v-else-if="result === false" class="error">Connexion échouée</p>
-    
-
   </div>
 </template>
 
@@ -62,11 +54,8 @@ export default {
       token: "",
     };
   },
-props:{ 
-
-},
+  props: {},
   methods: {
-      
     async login() {
       const options = {
         method: "POST",
@@ -83,27 +72,25 @@ props:{
         "https://social-network-api.osc-fr1.scalingo.io/demo/login",
         options
       );
-console.log(response);
+      console.log(response);
       const data = await response.json();
-console.log(data);
+      console.log(data);
       this.result = data.success;
       if (data.success === true) {
         this.token = data.token;
-         localStorage.setItem("token",this.token);
+        localStorage.setItem("token", this.token);
+        this.$router.push("/");
       }
     },
-
-    
   },
 };
 </script>
 
 <style>
-#mainContainer {
+#mainContainerLogIn {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   text-align: center;
   color: white;
- 
 }
 
 .input-container {
@@ -152,15 +139,15 @@ console.log(data);
   color: white;
 }
 #bgvid {
-    position: relative;
-    background-size: cover;
-    background-position: center;
-    overflow: hidden;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
 }
 
 h1 {
-      margin-top: -50px;
-    margin-bottom: 30px;
+  margin-top: -50px;
+  margin-bottom: 30px;
 }
 
 #passwordInput {
@@ -176,5 +163,4 @@ h1 {
   z-index: 10000;
   position: relative;
 }
-
 </style>
