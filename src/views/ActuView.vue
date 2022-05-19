@@ -1,18 +1,17 @@
 <template>
   <div>
     <NavBar />
-    <nav>
-      
-    </nav>
-
-     <Recuperer />
+    <nav></nav>
+    <div id="logInAcc">
+      <button id="btn" @mouseover="mouseEvent">Connexion</button>
+    </div>
+    <Recuperer />
     <Deconnecter />
     <Poster />
   </div>
 </template>
 
 <script>
-
 import Poster from "../components/Poster.vue";
 import Deconnecter from "../components/Deconnecter.vue";
 import NavBar from "../components/NavBar.vue";
@@ -39,6 +38,13 @@ export default {
       this.isDisplay = !this.isDisplay;
     },
   },
+
+  // methods: { eventMouse
+  //   MouseEvent(){
+  // this.eventMouse.transform
+
+  //   }
+  // }
 };
 </script>
 
@@ -52,5 +58,14 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+#logInAcc :hover {
+  transform: translate(100px, 0);
+}
+
+#btn {
+  width: 150px;
+  height: 30px;
+  transition: transform 330ms ease-in-out;
 }
 </style>

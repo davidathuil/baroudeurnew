@@ -1,90 +1,74 @@
 <template>
   <section>
-  <br>
-  <br>
-  <br>
+    <br />
+    <br />
+    <br />
     <div>
-      <input type = "text" placeholder = "recherche">
+      <input type="text" placeholder="recherche" />
     </div>
 
     <div class="home">
-      <h4>Mon profil</h4> 
+      <h4>Mon profil</h4>
     </div>
 
     <div class="input-container">
-                <label for="title">title : </label>
-                <input
-                type="text"
-                id="title"
-                v-model="title"
-                placeholder="Votre Titre"
-                required
-                />
-            </div>
-
-    <div id="monPost"> 
-      Poster une actu
+      <label for="title">title : </label>
+      <input
+        type="text"
+        id="title"
+        v-model="title"
+        placeholder="Votre Titre"
+        required
+      />
     </div>
- <input type ="text" id="content" v-model="content" placeholder="Je poste mon actu">
+
+    <div id="monPost">Poster une actu</div>
+    <input
+      type="text"
+      id="content"
+      v-model="content"
+      placeholder="Je poste mon actu"
+    />
     <div>
-     <button @click="ajouter" id="ajouter"> Ajouter poste/photo </button>
+      <button @click="ajouter" id="ajouter">Ajouter poste/photo</button>
     </div>
 
-    <div id="actu">
-    Mon actu    
-    </div>
+    <div id="actu">Mon actu</div>
 
-<RecupUser />
-
+    <RecupUser />
   </section>
-
-
-  
-
 </template>
 
 <script>
-
 import RecupUser from "../components/RecupUser.vue";
 
 export default {
-  
-     name: "App",
+  name: "App",
   components: {
-   
     RecupUser,
-   
   },
   data() {
     return {
-      
       token: localStorage.getItem("token"),
       title: "",
-      content:"",
-      
-      idPost:"",
+      content: "",
 
+      idPost: "",
     };
   },
-  
+
   methods: {
     async poster() {
-     
-
       const options = {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "bearer " + localStorage.getItem("token")
+          Authorization: "bearer " + localStorage.getItem("token"),
         },
-         body: JSON.stringify({
+        body: JSON.stringify({
           title: this.title,
           content: this.content,
-          
-          
         }),
-      
-       
       };
 
       const response = await fetch(
@@ -93,20 +77,26 @@ export default {
       );
 
       const data = await response.json();
-      
-     
- console.log(response);
- console.log(data);
-      
+
+      console.log(response);
+      console.log(data);
     },
   },
 };
 </script>
 
-<style scope> 
-#content { 
-padding: 50px 130px;
-border-top-left-radius: 20px;
-border-bottom-right-radius: 20px;
+<style scope>
+#content {
+  padding: 50px 130px;
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+#title {
+  border-top-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 </style>

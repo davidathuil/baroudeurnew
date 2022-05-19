@@ -1,45 +1,29 @@
 <template>
   <div id="mainContainer">
     <!-- Formulaire de connexion -->
-   <div class="input-container">
-                <label for="title">title : </label>
-                <input
-                type="text"
-                id="title"
-                v-model="title"
-                placeholder="Votre Titre"
-                required
-                />
-            </div>
+    <div class="input-container">
+      <label for="title">title : </label>
+      <input
+        type="text"
+        id="title"
+        v-model="title"
+        placeholder="Votre Titre"
+        required
+      />
+    </div>
 
     <div class="input-container">
-                <label for="content">content : </label>
-                <input
-                type="text"
-                id="content"
-                v-model="content"
-                placeholder="Votre post"
-                required
-                />
-            </div>
+      <label for="content">content : </label>
+      <input
+        type="text"
+        id="content"
+        v-model="content"
+        placeholder="Votre post"
+        required
+      />
+    </div>
 
-    <div class="input-container">
-                <label for="like">like : </label>
-                <input
-                type="checkbox"
-                id="like"
-                @click="Nbrlike"
-                
-                />
-            </div>
- 
-<button @click="poster">Poster</button>
-
-     
-
-    
-
-   
+    <button @click="poster">Ajouter</button>
   </div>
 </template>
 
@@ -52,41 +36,35 @@ export default {
       result: null,
       token: localStorage.getItem("token"),
       title: "",
-      content:"",
-      like:0,
-      idPost:"",
-
+      content: "",
+      like: 0,
+      idPost: "",
     };
   },
-  computed:{
-      Nbrlike(){
-           this.like += 1;
-      },
+  computed: {
+    Nbrlike() {
+      this.like += 1;
+    },
   },
-// Query parameters:
-// page: Number (par défaut: 0)
-// limit: Number (par défaut: 20)
-// Exemple: /posts?page=2&limit=10
-// pour obtenir la page 3 et 10 posts par
+  // Query parameters:
+  // page: Number (par défaut: 0)
+  // limit: Number (par défaut: 20)
+  // Exemple: /posts?page=2&limit=10
+  // pour obtenir la page 3 et 10 posts par
   methods: {
     async poster() {
-     
-
       const options = {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "bearer " + localStorage.getItem("token")
+          Authorization: "bearer " + localStorage.getItem("token"),
         },
-         body: JSON.stringify({
+        body: JSON.stringify({
           title: this.title,
           content: this.content,
-          likes:this.like,
-           
-          
+          likes: this.like,
         }),
         // idPost:this.idPost,
-       
       };
 
       const response = await fetch(
@@ -95,11 +73,9 @@ export default {
       );
 
       const data = await response.json();
-      
-     
- console.log(response);
- console.log(data);
-      
+
+      console.log(response);
+      console.log(data);
     },
   },
 };
