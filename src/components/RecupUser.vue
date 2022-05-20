@@ -1,5 +1,5 @@
 <template>
-  <div id="mainContainer">
+  <div id="mainContaineruser">
     <!-- Formulaire de connexion -->
    
 <button @click="recupererUser">recuperer user</button>
@@ -56,7 +56,7 @@
 
 <h1>POST utilisateur</h1>
      <ul>
-          <li v-for="(postt,index)  in posttest" :key="postt._id">
+          <li v-for="(postt,index)  in filteredpostuser" :key="postt._id">
              <p>{{postt.title}} {{postt.firstname}}</p>
              <p>{{postt.content}}</p>
              <p>{{postt.likes.length}}</p>
@@ -216,9 +216,9 @@ console.log(data)
 
 
  },
-mounted() {this.recuperer()},
-mounted() {this.recupererUser()},
 
+beforeMount() {this.recupererUser()},
+mounted() {this.recuperer()},
 
 };
  
@@ -226,7 +226,7 @@ mounted() {this.recupererUser()},
 </script>
 
 <style>
-#mainContainer {
+#mainContaineruser {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   text-align: center;
   
