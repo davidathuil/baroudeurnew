@@ -1,47 +1,56 @@
 <template>
   <div id="mainContainerRecup">
     <!-- Formulaire de connexion -->
-<h1>coucou {{emitprop}}</h1>
-    <button @uptadepost="recuperer" @click="recuperer">recuperer</button>
+    <!-- <h1>coucou {{ emitprop }}</h1> -->
 
     <div id="recupUserContent">
       <div v-for="(postt, index) in posttest" :key="postt._id" id="editPost">
         <p>{{ postt.title }} {{ postt.firstname }}</p>
         <p>{{ postt.content }}</p>
-        <p>{{ postt.likes.length }}</p>
-        <p v-for="like in postt.likes">{{ likes.firstname }}</p>
-
-        <p v-for="com in postt.comments">
-          {{ com.content }}{{ com.firstname }}
-        </p>
-
-        <button @click="like(postt._id)">like</button>
         <div>
-          <label for="commentaire">commentaire : </label>
-          <input
-            type="text"
-            id="commentaire"
-            v-model="commentaire[index]"
-            placeholder="Votre commentaire"
-            required
-          />
-
-          <button @click="comment(postt._id, index)">post comment</button>
+          <div>
+            <p>{{ postt.likes.length }}{{ postt.comments.lenght }}</p>
+          </div>
+          <div>
+            <div>
+              <button @click="comment(postt._id, index)">post comment</button>
+            </div>
+            <div>
+              <button @click="like(postt._id)">like</button>
+            </div>
+          </div>
+          <div v-if="isShowDiv">
+            <div>
+              <p v-for="like in postt.likes">{{ likes.firstname }}</p>
+            </div>
+            <div>
+              <p v-for="com in postt.comments">
+                {{ com.content }}{{ com.firstname }}
+              </p>
+              <div>
+                <label for="commentaire">commentaire : </label>
+                <input
+                  type="text"
+                  id="commentaire"
+                  v-model="commentaire[index]"
+                  placeholder="Votre commentaire"
+                  required
+                />
+              </div>
+            </div>
+          </div>
         </div>
         <!-- <p>{{postt._id}} </p> -->
       </div>
     </div>
-    
   </div>
 </template>
 
 <script>
 export default {
-
-  props:{
-        emitprop:String,
-       
-    },
+  props: {
+    emitprop: String,
+  },
   data() {
     return {
       email: "david_athuil@yahoo.fr",
@@ -52,6 +61,7 @@ export default {
       firstname: "David",
       posttest: [],
       likes: 0,
+      isShowDiv: "",
       commentaire: [],
     };
   },
@@ -73,21 +83,21 @@ export default {
     },
   },
 
-
   methods: {
     likeconsole(a) {
       console.log(a);
     },
     recup() {
       alert(this.emitprop);
-      if (this.emitprop="ok"){
-      alert("je suis la")};
-      this.recuperer
+      if ((this.emitprop = "ok")) {
+        alert("je suis la");
+      }
+      this.recuperer;
     },
 
-    recuponevent(uptadepost){
-      if (uptadepost){
-        this.recuperer()
+    recuponevent(uptadepost) {
+      if (uptadepost) {
+        this.recuperer();
       }
     },
 
@@ -162,11 +172,11 @@ export default {
   mounted() {
     this.recuperer();
   },
-//   mounted(){this.$root.$on('uptadepost', this.recuperer());
-// //     });
-// // },
-// },
-}
+  //   mounted(){this.$root.$on('uptadepost', this.recuperer());
+  // //     });
+  // // },
+  // },
+};
 </script>
 
 <style>
@@ -175,7 +185,28 @@ export default {
   text-align: center;
   color: #2c3e50;
   position: absolute;
-  padding: 35%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+
+  border: hidden;
+  width: 90%;
+  height: 100%;
+
+  margin-top: 25%;
+}
+
+body::-webkit-scrollbar {
+  width: 12px; /* width of the entire scrollbar */
+}
+
+body::-webkit-scrollbar-track {
+  background: rgba(223, 225, 227, 0.91); /* color of the tracking area */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: rgba(33, 33, 106, 0.866); /* color of the scroll thumb */
+  border-radius: 20px; /* roundness of the scroll thumb */
+  border: 3px solid rgba(33, 33, 106, 0.636); /* creates padding around scroll thumb */
 }
 
 .input-container {
