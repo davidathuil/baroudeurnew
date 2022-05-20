@@ -1,29 +1,30 @@
 <template>
   <div id="mainContainer">
-    <h2>Bienvenue chez les Baroudeurs !</h2>
-    <br>
+    <img src="../assets/logo.png" />
+    <h1>Bienvenue chez les Baroudeurs !</h1>
+    <br />
     <!-- Formulaire de connexion -->
     <form id="creation" @submit.prevent="register">
-        <div class="input-container">
-                <label for="firstname">Prénom : </label>
-                <input
-                type="text"
-                id="firstname"
-                v-model="firstname"
-                placeholder="Votre prénom"
-                required
-                />
-            </div>
-            <div class="input-container">
-                <label for="lastname">Nom : </label>
-                <input
-                type="text"
-                id="lastname"
-                v-model="lastname"
-                placeholder="Votre Nom"
-                required
-                />
-            </div>
+      <div class="input-container">
+        <label for="firstname">Prénom : </label>
+        <input
+          type="text"
+          id="firstname"
+          v-model="firstname"
+          placeholder="Votre prénom"
+          required
+        />
+      </div>
+      <div class="input-container">
+        <label for="lastname">Nom : </label>
+        <input
+          type="text"
+          id="lastname"
+          v-model="lastname"
+          placeholder="Votre Nom"
+          required
+        />
+      </div>
 
       <div class="input-container">
         <label for="emailInput">Email : </label>
@@ -46,8 +47,10 @@
           required
         />
       </div>
-
-      <input class="login-button" type="submit" value="Se connecter" />
+ <input class="login-button" type="submit" value="S'inscrire" />
+      <br>
+      <button id="homeBtn" @click="$router.push('/')">Retour à l'accueil</button>
+      
     </form>
 
     <p v-if="result === true" class="success">
@@ -106,6 +109,5 @@ export default {
 <style>
 #creation {
   z-index: 10000;
-  }
-
+}
 </style>

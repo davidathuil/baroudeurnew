@@ -3,7 +3,7 @@
     <NavBar />
     <nav></nav>
     <div id="logInAcc">
-      <button id="btn">Connexion</button>
+      <button @click="$router.push('/Login')">Connexion</button>
     </div>
     <Recuperer :emitprop="this.test"  ></Recuperer>
     <Deconnecter />
