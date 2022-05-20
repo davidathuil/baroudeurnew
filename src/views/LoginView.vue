@@ -5,13 +5,13 @@
     </div>
 <br>
 <div id="inscription">
-    Nouveau sur le site? inscris toi ! >>> 
-    <button id="inscriptionBtn" @click="isDisplay = !isDisplay">Inscription</button>
-    </div>
-    <div v-if="!isDisplay">
+   <div v-if="!isDisplay">
       <Creation />
     </div>
-   
+   {{!isDisplay ? "": "Nouveau sur le site? inscris toi ! >>> "}}
+    
+    <button id="inscriptionBtn" @click="isDisplay = !isDisplay">{{!isDisplay ? "Déjà membre? Connectes toi !": "Inscription"}}</button>
+    </div>
   </div>
 
   <video autoplay loop>

@@ -33,6 +33,8 @@
       </div>
 
       <input class="login-button" type="submit" value="Se connecter" />
+       <br>
+      <button id="homeBtn" @click="$router.push('/')">Retour à l'accueil</button>
     </form>
 
     <p v-if="result === true" class="success">
@@ -162,5 +164,16 @@ h1 {
  
   z-index: 10000;
   position: relative;
+}
+
+#homeBtn {
+  margin: 20px;
+  padding: 10px;
+  background-color: black;
+  color: white;
+  border: 0px;
+  border-radius: 5px;
+  font-size: 15px;
+  cursor: pointer;
 }
 </style>
