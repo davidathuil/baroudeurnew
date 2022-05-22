@@ -229,7 +229,7 @@ mounted() {this.recuperer()},
 #mainContaineruser {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   text-align: center;
-  
+  color:blue;
   margin-top: 60px;
 }
 

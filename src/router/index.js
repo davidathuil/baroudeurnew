@@ -17,7 +17,7 @@ const routes = [
   },
 
   {
-    path: "/Profil",
+    path: "/Profil/:id",
     name: "Profil",
     component: ProfilView,
   },

@@ -19,7 +19,7 @@ import Deconnect from "../components/Deconnect.vue";
 import NavBar from "../components/NavBar.vue";
 import Recuperer from "../components/Recuperer.vue";
 export default {
-  name: "App",
+  
   components: {
     // Login,
     // Creation,
