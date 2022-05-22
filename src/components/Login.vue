@@ -5,7 +5,7 @@
 </video> -->
     <!-- Formulaire de connexion -->
     <form id="formulaire" @submit.prevent="login">
-      <center><img src="../assets/logo.png" /></center>
+      <img src="../assets/logo.png" />
       <h1>Le Petit Baroudeur</h1>
       <br />
       <h2>LOG IN</h2>

@@ -25,7 +25,7 @@ import Creation from "../components/Creation.vue";
 import Deconnect from "../components/Deconnect.vue";
 
 export default {
-  name: "App",
+  
   components: {
     Login,
     Creation,

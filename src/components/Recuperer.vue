@@ -1,12 +1,15 @@
 <template>
   <div id="mainContainerRecup">
     <!-- Formulaire de connexion -->
-    <!-- <h1>coucou {{ emitprop }}</h1> -->
+    
 
     <div id="recupUserContent">
+      <h1>coucou {{ emitprop }}</h1>
       <div v-for="(postt, index) in posttest" :key="postt._id" id="editPost">
         <p>{{ postt.title }} {{ postt.firstname }}</p>
         <p>{{ postt.content }}</p>
+        <p v-if=" postt.filename">
+        <img :src="'https://social-network-api.osc-fr1.scalingo.io/media/'+postt.filename" /></p>
         <div>
           <div>
             <p>{{ postt.likes.length }}{{ postt.comments.lenght }}</p>
@@ -70,7 +73,7 @@ export default {
       let postuser = this.posttest;
 
       postuser = postuser.filter((item) => {
-        return item.userId == "6282762cb27c77001b8e5710";
+        return item.userId == postt._id;
       });
 
       return postuser;
@@ -192,7 +195,7 @@ export default {
   width: 90%;
   height: 100%;
 
-  margin-top: 25%;
+  margin-top: 45%;
 }
 
 body::-webkit-scrollbar {

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <NavBar />
+    
 <nav>
     <router-link to="/"> Fil d'actu </router-link>
     <router-link :to="{ name: 'Profil', params: { id: this.id } }">Profil</router-link>

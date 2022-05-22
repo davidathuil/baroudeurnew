@@ -6,7 +6,7 @@
       <button @click="$router.push('/Login')">Connexion</button>
     </div>
     <Recuperer :emitprop="this.test"  ></Recuperer>
-    <Deconnecter />
+    <Deconnect />
     <Poster @uptadepost="recuperer" ></Poster>
 
     <footer id="footer">&copy Le petit Baroudeur</footer>

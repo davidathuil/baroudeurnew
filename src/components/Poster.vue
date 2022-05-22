@@ -1,14 +1,17 @@
 <template>
   <div id="mainContainerPoster">
     <!-- Formulaire de connexion -->
+    <form id="creation" @submit.prevent="poster" > <!-- enctype="multipart/form-data" -->
     <div class="input-container">
       <label for="title">title : </label>
       <input
         type="text"
+        name="title"
         id="title"
         v-model="title"
         placeholder="Votre Titre"
-        required
+        
+        
       />
     </div>
 
@@ -16,16 +19,30 @@
       <label for="content">content : </label>
       <input
         type="text"
+        name="content"
         id="content"
         v-model="content"
         placeholder="Votre post"
-        required
+        
+        
+      />
+    </div>
+     <div class="input-container">
+      <label for="content">joindre : </label>
+      <input
+      id="fichier"
+        type="file"
+        name="file"
+        accept="image/png, image/jpg, image/gif"
+        
       />
     </div>
 
     <button @click="poster">Ajouter</button>
     <button @click="test">test</button>
+    </form>
   </div>
+  
 </template>
 
 <script>
@@ -36,7 +53,7 @@ export default {
       password: "test",
       result: null,
       token: localStorage.getItem("token"),
-      title: "",
+      title: "test",
       content: "",
       like: 0,
       idPost: "",
@@ -45,34 +62,36 @@ export default {
 
   emits:['uptadepost'],
    
-  // Query parameters:
-  // page: Number (par défaut: 0)
-  // limit: Number (par défaut: 20)
-  // Exemple: /posts?page=2&limit=10
-  // pour obtenir la page 3 et 10 posts par
+ 
   methods: {
-updtpostrecup(){
-this.$root.recuperer()
-},
+
 
 test(){
   this.$emit('uptadepost');
 },
 
     async poster() {
+// body: new FormData(creation)
+// alert(document.getElementById("fichier").value);
+  //       let formData = new FormData();
+  // formData.append('title',  this.title);
+  // formData.append('content', this.content);
+
+  // formData.append("file", document.getElementById("fichier").value);
+
       const options = {
+        body:  new FormData(creation),
         method: "POST",
+        
         headers: {
-          "Content-Type": "application/json",
+            // "Content-Type": "multipart/form-data",
           Authorization: "bearer " + localStorage.getItem("token"),
         },
-        body: JSON.stringify({
-          title: this.title,
-          content: this.content,
-          
-        }),
+        
+        
         // idPost:this.idPost,
       };
+   delete options.headers['Content-Type'];
 
       const response = await fetch(
         "https://social-network-api.osc-fr1.scalingo.io/demo/post",
@@ -99,6 +118,7 @@ test(){
 
   position: absolute;
   padding-left: 33%;
+  
 }
 
 .input-container {
