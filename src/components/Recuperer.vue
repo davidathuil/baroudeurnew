@@ -19,7 +19,10 @@
               <button @click="like(postt._id)">like</button>
             </div>
           </div>
-          <div v-if="isShowDiv">
+          <!-- <div v-for="isShowDiv in postt.comments">
+            {{ commentaire.isShowDiv }} -->
+          <div v-for="com in postt.comments">
+            {{ isShowDiv }}
             <div>
               <p v-for="like in postt.likes">{{ likes.firstname }}</p>
             </div>
