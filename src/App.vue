@@ -3,7 +3,7 @@
     <NavBar />
 <nav>
     <router-link to="/"> Fil d'actu </router-link>
-    <router-link to="/Profil"> Profil </router-link>
+    <router-link :to="{ name: 'Profil', params: { id: this.id } }">Profil</router-link>
     <router-link to="/Login"> Login </router-link>
 </nav>    
 <!-- 
@@ -38,7 +38,7 @@ export default {
   },
   data() {
     return {
-      // isDisplay: true,
+       id :"orange",
     };
   },
 
@@ -59,6 +59,6 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: white;
+  color: pink;
 }
 </style>
