@@ -1,42 +1,79 @@
 <template>
-  <section>
-    <br />
-    <br />
-    <br />
-    <div>
-      <input type="text" placeholder="recherche" />
+<div>
+  <header>
+ <div><img src="../assets/logo.png">
+      
     </div>
+</header>
 
-    <div class="home">
-      <h4>Mon profil</h4>
+<body>
+  <div id="bandeau"> 
+    <p><button id="homeBtn" @click="$router.push('/')">Retour à l'accueil</button></p>
+    <h1> MON PROFIL</h1>
+    <p><button id="connectBtn" @click="$router.push('/Login')">Connexion</button></p>
+    
+    
     </div>
-
+  
+<section id="profilPost">
+  
+  
+  <div id="mainContainerPoster">
+    <!-- Formulaire de connexion -->
+ <RecupUser />
+    <form id="creation" @submit.prevent="poster" > <!-- enctype="multipart/form-data" -->
     <div class="input-container">
-      <label for="title">title : </label>
+      <br>
       <input
         type="text"
+        name="title"
         id="title"
         v-model="title"
-        placeholder="Votre Titre"
-        required
+        placeholder="Titre de votre commentaire"
+        
+        
+      />
+    </div>
+    <br>
+
+    <div class="input-container">
+      <label for="content">Commente ta publication : </label>
+      <br>
+      <input
+        type="text"
+        name="content"
+        id="content"
+        v-model="content"
+        placeholder="Votre post"
+        
+        
+      />
+    </div>
+     
+    <br>
+     <div class="input-container">
+      <label for="content">Ajoute une photo à ton post ! </label>
+      <br>
+      <input
+      id="fichier"
+        type="file"
+        name="file"
+        accept="image/png, image/jpg, image/gif"
+        
       />
     </div>
 
-    <div id="monPost">Poster une actu</div>
-    <input
-      type="text"
-      id="content"
-      v-model="content"
-      placeholder="Je poste mon actu"
-    />
-    <div>
-      <button @click="ajouter" id="ajouter">Ajouter poste/photo</button>
-    </div>
+    <button @click="poster">Ajouter</button>
+    <button @click="test">test</button>
+    </form>
+      
+  </div>
+   
+</section>
 
-    <div id="actu">Mon actu</div>
-
-    <RecupUser />
-  </section>
+</body>
+ 
+</div>  
 </template>
 
 <script>
@@ -85,7 +122,9 @@ export default {
 };
 </script>
 
-<style scope>
+<style scoped>
+@import url("https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Montserrat:wght@300&family=Passion+One&family=Roboto:wght@100;500&family=Square+Peg&display=swap");
+
 #content {
   padding: 50px 130px;
   border-top-left-radius: 20px;
@@ -98,5 +137,43 @@ export default {
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
   border-top-right-radius: 10px;
+}
+
+header {
+  background-image: url(../assets/bgTitle2.jpg);
+  background-size: cover;
+  padding: 20px;
+  color: white;
+
+} 
+
+#profilPost {
+  margin-left: 20%;
+  margin-right: 20%;
+  background-color: black;
+  margin-top: -10px;
+ 
+}
+
+body {
+  background-image: url(../assets/bgCol.jpg)
+}
+
+#bandeau {
+  background-color: black;
+  padding: 30px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#mainContainerPoster {
+  margin:10px;
+  text-align: center;
+}
+
+button {
+  cursor: pointer;
 }
 </style>

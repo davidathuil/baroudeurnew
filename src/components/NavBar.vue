@@ -98,7 +98,7 @@ export default {
 #title {
   background-image: url(../assets/bgTitle2.jpg);
   background-size: cover;
-  padding: 2px;
+  padding: 70px;
   font-size: 5rem;
   font-family: "Montserrat", sans-serif;
   font-family: "Roboto", sans-serif;
@@ -106,8 +106,7 @@ export default {
   font-size: 210px;
   color: black;
   text-shadow: white 1px 0 10px;
-  width: 100vw;
-  height: 70vh;
+  
   min-width: 100%;
   min-height: 100%;
   top: 0;

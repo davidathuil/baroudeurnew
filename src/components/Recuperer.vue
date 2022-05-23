@@ -176,12 +176,12 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 #mainContainerRecup {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   text-align: center;
   color: #2c3e50;
-  position: absolute;
+ 
   overflow-x: hidden;
   overflow-y: scroll;
   border: hidden;

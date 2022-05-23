@@ -88,7 +88,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 #mainContainerLogIn {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   text-align: center;

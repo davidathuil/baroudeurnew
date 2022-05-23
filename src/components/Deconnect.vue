@@ -22,7 +22,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 #mainContainerDeco {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   text-align: center;

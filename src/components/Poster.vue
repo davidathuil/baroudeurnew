@@ -110,13 +110,14 @@ test(){
 };
 </script>
 
-<style>
+<style scoped>
 #mainContainerPoster {
   font-family: Avenir, Helvetica, Arial, sans-serif;
 
-  color: #2c3e50;
+     display: inline-flex;
 
-  position: absolute;
+ 
+ 
   padding-left: 33%;
   
 }

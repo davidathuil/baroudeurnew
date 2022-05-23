@@ -1,141 +1,128 @@
 <template>
   <div id="mainContaineruser">
     <!-- Formulaire de connexion -->
-   
-<button @click="recupererUser">recuperer user</button>
 
-     <ul>
-     
-          <li v-for="(user,index)  in users" :key="user._id">
-           <p>{{user}} </p>
-             <p>{{user.firstname}} </p>
-             <p>{{user.lastname}}</p>
-             <p>{{user.email}}</p>
-             
-         
-            <!-- <p>{{postt._id}} </p> -->
-            
-          </li>
-        </ul>
-         <button  @click="isDisplay = !isDisplay">Modifcompte</button>
-        <div  v-if="isDisplay">
+    <div id="publications">
+    <h1>Vos Publications :</h1>
+    <ul>
+      <li v-for="(postt, index) in filteredpostuser" :key="postt._id">
+        <p>{{ postt.title }} {{ postt.firstname }}</p>
+        <p>{{ postt.content }}</p>
+        <p>{{ postt.likes.length }}</p>
+        <p v-for="like in postt.likes">{{ likes.firstname }}</p>
+
+        <p v-for="com in postt.comments">
+          {{ com.content }}{{ com.firstname }}
+        </p>
+
+        <button @click="like(postt._id)">like</button>
         <div>
- <label for="firstnamemodif">Prénom modif: </label>
-                <input
-                type="text"
-                id="firstnamemodif"
-                v-model="firstnameM"
-                placeholder="david"
-                required
-                />
-            </div>
-            <div class="input-container">
-                <label for="lastnamemodif">lastname modif: </label>
-                <input
-                type="text"
-                id="lastnamemodif"
-                v-model="lastnameM"
-                placeholder="athuil"
-                required
-                />
-            </div>
+          <label for="commentaire">commentaire : </label>
+          <input
+            type="text"
+            id="commentaire"
+            v-model="commentaire[index]"
+            placeholder="Votre commentaire"
+            required
+          />
 
-      <div class="input-container">
-        <label for="emailmodif">Email modif: </label>
-        <input
-          type="email"
-          id="emailmodif"
-          v-model="emailM"
-          placeholder="john.doe@network"
-          required
-        />
+          <button @click="comment(postt._id, index)">post comment</button>
+        </div>
+        <!-- <p>{{postt._id}} </p> -->
+      </li>
+    </ul>
+    </div>
+    <div id="modifProfil">
+    <ul>
+      <li v-for="(user, index) in users" :key="user._id">
+        <p>{{ user }}</p>
+        <p>{{ user.firstname }}</p>
+        <p>{{ user.lastname }}</p>
+        <p>{{ user.email }}</p>
+
+        <!-- <p>{{postt._id}} </p> -->
+      </li>
+    </ul>
+    
+      <button @click="isDisplay = !isDisplay">Modifcompte</button>
+      <div v-if="isDisplay">
+        <div>
+          <label for="firstnamemodif">Prénom modif: </label>
+          <input
+            type="text"
+            id="firstnamemodif"
+            v-model="firstnameM"
+            placeholder="david"
+            required
+          />
+        </div>
+        <div class="input-container">
+          <label for="lastnamemodif">lastname modif: </label>
+          <input
+            type="text"
+            id="lastnamemodif"
+            v-model="lastnameM"
+            placeholder="athuil"
+            required
+          />
+        </div>
+
+        <div class="input-container">
+          <label for="emailmodif">Email modif: </label>
+          <input
+            type="email"
+            id="emailmodif"
+            v-model="emailM"
+            placeholder="john.doe@network"
+            required
+          />
+        </div>
+        <button @click="modifUser">SEnd Modif user</button>
       </div>
-      <button @click="modifUser"> SEnd Modif user</button> 
-</div>
-   
+    </div>
 
-<h1>POST utilisateur</h1>
-     <ul>
-          <li v-for="(postt,index)  in filteredpostuser" :key="postt._id">
-             <p>{{postt.title}} {{postt.firstname}}</p>
-             <p>{{postt.content}}</p>
-             <p>{{postt.likes.length}}</p>
-             <p v-for="like in postt.likes "> {{likes.firstname}} </p> 
-            
-             <p v-for="com in postt.comments ">{{com.content}}{{com.firstname}}  </p>
-             
-            
-            <button @click="like(postt._id)">like</button>
-             <div>
-             <label for="commentaire">commentaire : </label>
-                <input
-                type="text"
-                id="commentaire"
-                v-model="commentaire[index]"
-                placeholder="Votre commentaire"
-                required
-                />
-            
-            <button @click="comment(postt._id,index)">post comment</button>
-          </div>
-            <!-- <p>{{postt._id}} </p> -->
-            
-          </li>
-        </ul>
-
-
-
-
-   </div>
-  
+  </div>
 </template>
 
 <script>
-
-
 export default {
   data() {
     return {
       email: "",
       password: "",
       result: null,
-       token: localStorage.getItem("token"),
-      lastname:"",
-      firstname:"",
-      posttest:[],
-      isDisplay:false,
-      likes:0,
-      commentaire:[],
-      users:[],
-      iduser:""  
+      token: localStorage.getItem("token"),
+      lastname: "",
+      firstname: "",
+      posttest: [],
+      isDisplay: false,
+      likes: 0,
+      commentaire: [],
+      users: [],
+      iduser: "",
     };
   },
-   
-computed:{
-      filteredpostuser() {
-    let postuser = this.posttest
-    
-    postuser = postuser.filter((item) => {
-      return (item.userId == this.iduser)
-      
-    })
-    
-    return postuser;
-      
-  },
-},
-  
-  methods: {
 
-    
+  computed: {
+    filteredpostuser() {
+      let postuser = this.posttest;
+
+      postuser = postuser.filter((item) => {
+        return item.userId == this.iduser;
+      });
+
+      return postuser;
+    },
+  },
+
+  methods: {
     async recupererUser() {
       const options = {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "bearer " + localStorage.getItem("token")
+          Authorization: "bearer " + localStorage.getItem("token"),
         },
-        
       };
 
       const response = await fetch(
@@ -145,35 +132,29 @@ computed:{
 
       const data = await response.json();
       this.users = data;
-      this.iduser=data._id
-console.log(response),
-console.log(data)
-      
+      this.iduser = data._id;
+      console.log(response), console.log(data);
     },
-    modifIsdisplay(){
-      
- if (this.isDisplay = true) {return this.isDisplay = false}
- else {return this.isDisplay =true}
+    modifIsdisplay() {
+      if ((this.isDisplay = true)) {
+        return (this.isDisplay = false);
+      } else {
+        return (this.isDisplay = true);
+      }
     },
- 
-async modifUser() {
 
+    async modifUser() {
       const options = {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "bearer " + localStorage.getItem("token")
+          Authorization: "bearer " + localStorage.getItem("token"),
         },
         body: JSON.stringify({
           firstname: this.firstnameM,
           lastname: this.lastnameM,
-          email:this.emailM,
-           
-          
+          email: this.emailM,
         }),
-
-
-        
       };
 
       const response = await fetch(
@@ -183,18 +164,15 @@ async modifUser() {
 
       const data = await response.json();
       this.users = data;
-console.log(response),
-console.log(data)
-      
+      console.log(response), console.log(data);
     },
 
- async recuperer() {
+    async recuperer() {
       const options = {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
         },
-        
       };
 
       const response = await fetch(
@@ -204,32 +182,24 @@ console.log(data)
 
       const data = await response.json();
       this.posttest = data.posts;
-console.log(response),
-console.log(data)
-      
+      console.log(response), console.log(data);
     },
+  },
 
-
-
-
-
-
-
- },
-
-beforeMount() {this.recupererUser()},
-mounted() {this.recuperer()},
-
+  beforeMount() {
+    this.recupererUser();
+  },
+  mounted() {
+    this.recuperer();
+  },
 };
- 
-
 </script>
 
-<style>
+<style scoped>
 #mainContaineruser {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   text-align: center;
-  color:blue;
+  color: black;
   margin-top: 60px;
 }
 
@@ -278,4 +248,20 @@ mounted() {this.recuperer()},
   background-color: #b42f26;
   color: white;
 }
+
+li {
+  background-color: rgb(248, 247, 247);
+  margin-bottom: 30px;
+  margin-top: 10px;
+
+  border-radius: 20px;
+  color: black;
+}
+
+h1 {
+  color: white;
+  margin: 20px;
+}
+
+
 </style>
