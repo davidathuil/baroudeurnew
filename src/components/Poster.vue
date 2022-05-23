@@ -38,7 +38,7 @@
       />
     </div>
 
-    <button @click="poster">Ajouter</button>
+    <button>Ajouter</button>
     <button @click="test">test</button>
     </form>
   </div>
@@ -73,14 +73,14 @@ test(){
     async poster() {
 // body: new FormData(creation)
 // alert(document.getElementById("fichier").value);
-  //       let formData = new FormData();
-  // formData.append('title',  this.title);
-  // formData.append('content', this.content);
+        let formData = new FormData();
+  formData.append('title',  this.title);
+  formData.append('content', this.content);
 
-  // formData.append("file", document.getElementById("fichier").value);
+  formData.append("file", document.getElementById("fichier").files[0]);
 
       const options = {
-        body:  new FormData(creation),
+        body:  formData,
         method: "POST",
         
         headers: {

@@ -10,46 +10,31 @@
         <p>{{ postt.content }}</p>
         <p v-if=" postt.filename">
         <img :src="'https://social-network-api.osc-fr1.scalingo.io/media/'+postt.filename" /></p>
+        
+          
+            <p>likes compte{{ postt.likes.length }}comment compte{{ postt.comments.length }}</p>
+           <p v-for="like in postt.likes" :key="like._id" >{{ likes.firstname }}</p>
+        <p v-for="com in postt.comments" :key="com._id">
+          {{ com.content }}{{ com.firstname }}
+        </p>
+        <button @click="like(postt._id)">like</button>
         <div>
-          <div>
-            <p>{{ postt.likes.length }}{{ postt.comments.lenght }}</p>
-          </div>
-          <div>
-            <div>
-              <button @click="comment(postt._id, index)">post comment</button>
-            </div>
-            <div>
-              <button @click="like(postt._id)">like</button>
-            </div>
-          </div>
-          <!-- <div v-for="isShowDiv in postt.comments">
-            {{ commentaire.isShowDiv }} -->
-          <div v-for="com in postt.comments">
-            {{ isShowDiv }}
-            <div>
-              <p v-for="like in postt.likes">{{ likes.firstname }}</p>
-            </div>
-            <div>
-              <p v-for="com in postt.comments">
-                {{ com.content }}{{ com.firstname }}
-              </p>
-              <div>
-                <label for="commentaire">commentaire : </label>
-                <input
-                  type="text"
-                  id="commentaire"
-                  v-model="commentaire[index]"
-                  placeholder="Votre commentaire"
-                  required
-                />
-              </div>
-            </div>
-          </div>
+          <label for="commentaire">commentaire : </label>
+          <input
+            type="text"
+            id="commentaire"
+            v-model="commentaire[index]"
+            placeholder="Votre commentaire"
+            required
+          />
+          <button @click="comment(postt._id, index)">post comment</button>
         </div>
         <!-- <p>{{postt._id}} </p> -->
       </div>
     </div>
+
   </div>
+  
 </template>
 
 <script>
