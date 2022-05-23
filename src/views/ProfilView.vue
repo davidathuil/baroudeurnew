@@ -1,88 +1,91 @@
 <template>
-<div>
-  <header>
- <div><img src="../assets/logo.png">
-      
-    </div>
-</header>
+  <div>
+    <header>
+      <div><img src="../assets/logo.png" /></div>
+    </header>
 
-<body>
-  <div id="bandeau"> 
-    <p><button id="homeBtn" @click="$router.push('/')">Retour à l'accueil</button></p>
-    <h1> MON PROFIL</h1>
-    <p><button id="connectBtn" @click="$router.push('/Login')">Connexion</button></p>
-    
-    
-    </div>
-  
-<section id="profilPost">
-  
-  
-  <div id="mainContainerPoster">
-    <!-- Formulaire de connexion -->
- <RecupUser />
-    <form id="creation" @submit.prevent="poster" > <!-- enctype="multipart/form-data" -->
-    <div class="input-container">
-      <br>
-      <input
-        type="text"
-        name="title"
-        id="title"
-        v-model="title"
-        placeholder="Titre de votre commentaire"
-        
-        
-      />
-    </div>
-    <br>
+    <body>
+      <div id="bandeau">
+        <p>
+          <button id="homeBtn" @click="$router.push('/')">
+            Retour à l'accueil
+          </button>
+        </p>
+        <h1>VOTRE PROFIL</h1>
+        <p>
+          <button id="connectBtn" @click="$router.push('/Login')">
+            Connexion
+          </button>
+        </p>
+      </div>
 
-    <div class="input-container">
-      <label for="content">Commente ta publication : </label>
-      <br>
-      <input
-        type="text"
-        name="content"
-        id="content"
-        v-model="content"
-        placeholder="Votre post"
-        
-        
-      />
-    </div>
-     
-    <br>
-     <div class="input-container">
-      <label for="content">Ajoute une photo à ton post ! </label>
-      <br>
-      <input
-      id="fichier"
-        type="file"
-        name="file"
-        accept="image/png, image/jpg, image/gif"
-        
-      />
-    </div>
+      <section id="profilPost">
+        <div id="mainContainerPoster">
+          <!-- Formulaire de connexion -->
+          <ModifUser />
+          <br>
+          <form id="creation" @submit.prevent="poster">
+            <h3>Partagez vos expériences !</h3>
+            <div class="input-container">
+              <br />
+              <input
+                type="text"
+                name="title"
+                id="title"
+                v-model="title"
+                placeholder="Titre de votre commentaire"
+              />
+            </div>
+            <br />
 
-    <button @click="poster">Ajouter</button>
-    <button @click="test">test</button>
-    </form>
-      
+            <div class="input-container">
+              <label for="content">Commente ta publication : </label>
+              <br />
+              <input
+                type="text"
+                name="content"
+                id="content"
+                v-model="content"
+                placeholder="Votre post"
+              />
+            </div>
+
+            <br />
+            <div class="input-container">
+              <label for="content">Ajoute une photo à ton post ! </label>
+              <br />
+              <br />
+              <input
+                id="fichier"
+                type="file"
+                name="file"
+                accept="image/png, image/jpg, image/gif"
+              />
+            </div>
+            <br />
+              <br />
+
+            <button @click="poster">Ajouter</button>
+            <button @click="test">test</button>
+          </form>
+       
+          <RecupUser />
+        </div>
+      </section>
+    </body>
   </div>
-   
-</section>
-
-</body>
- 
-</div>  
 </template>
 
 <script>
 import RecupUser from "../components/RecupUser.vue";
 
+import ModifUser from "../components/ModifUser.vue";
+
 export default {
-  name: "App",
+  
   components: {
     RecupUser,
+    ModifUser,
   },
   data() {
     return {
@@ -144,20 +147,18 @@ header {
   background-size: cover;
   padding: 20px;
   color: white;
-
-} 
+}
 
 #profilPost {
   margin-left: 20%;
   margin-right: 20%;
-  background-color: black;
+ display: flex;
   margin-top: -10px;
- 
 }
 
-body {
-  background-image: url(../assets/bgCol.jpg)
-}
+/* body {
+  background-image: url(../assets/bgCol.jpg);
+} */
 
 #bandeau {
   background-color: black;
@@ -169,11 +170,19 @@ body {
 }
 
 #mainContainerPoster {
-  margin:10px;
+  margin: 10px;
   text-align: center;
+  display: block;
 }
 
 button {
   cursor: pointer;
+}
+
+#creation {
+  color: black;
+  background-color: rgba(0, 0, 0, 0.435);
+  padding: 20px;
+  margin: 20px;;
 }
 </style>

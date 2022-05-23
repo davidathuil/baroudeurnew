@@ -2,37 +2,60 @@
   <div id="mainContaineruser">
     <!-- Formulaire de connexion -->
 
-    <div id="publications">
-    <h1>Vos Publications :</h1>
-    <ul>
-      <li v-for="(postt, index) in filteredpostuser" :key="postt._id">
-        <p>{{ postt.title }} {{ postt.firstname }}</p>
-        <p>{{ postt.content }}</p>
-        <p>{{ postt.likes.length }}</p>
-        <p v-for="like in postt.likes">{{ likes.firstname }}</p>
+   
+    <div id="modifProfil">
+        <h3>Vos Coordonnées :</h3>
+    <ul id="coordonnees">
+      <li v-for="(user, index) in users" :key="user._id">
+        
+        <p>{{ user }}</p>
+        <p>{{ user.firstname }}</p>
+        <p>{{ user.lastname }}</p>
+        <p>{{ user.email }}</p>
 
-        <p v-for="com in postt.comments">
-          {{ com.content }}{{ com.firstname }}
-        </p>
-
-        <button @click="like(postt._id)">like</button>
-        <div>
-          <label for="commentaire">commentaire : </label>
-          <input
-            type="text"
-            id="commentaire"
-            v-model="commentaire[index]"
-            placeholder="Votre commentaire"
-            required
-          />
-
-          <button @click="comment(postt._id, index)">post comment</button>
-        </div>
         <!-- <p>{{postt._id}} </p> -->
       </li>
     </ul>
-    </div>
     
+      <button @click="isDisplay = !isDisplay">Modifier vos coordonnées</button>
+      <div v-if="isDisplay">
+        <div>
+            <br>
+            <br>
+          <label for="firstnamemodif">Prénom : </label>
+          <br>
+          <input
+            type="text"
+            id="firstnamemodif"
+            v-model="firstnameM"
+            placeholder="david"
+            required
+          />
+        </div>
+        <div class="input-container">
+          <label for="lastnamemodif">Nom: </label>
+          <input
+            type="text"
+            id="lastnamemodif"
+            v-model="lastnameM"
+            placeholder="athuil"
+            required
+          />
+        </div>
+
+        <div class="input-container">
+          <label for="emailmodif">Email : </label>
+          <input
+            type="email"
+            id="emailmodif"
+            v-model="emailM"
+            placeholder="john.doe@network"
+            required
+          />
+        </div>
+        <button @click="modifUser">Valider les modifications</button>
+      </div>
+    </div>
 
   </div>
 </template>
@@ -56,17 +79,7 @@ export default {
     };
   },
 
-  computed: {
-    filteredpostuser() {
-      let postuser = this.posttest;
 
-      postuser = postuser.filter((item) => {
-        return item.userId == this.iduser;
-      });
-
-      return postuser;
-    },
-  },
 
   methods: {
     async recupererUser() {
@@ -120,31 +133,15 @@ export default {
       console.log(response), console.log(data);
     },
 
-    async recuperer() {
-      const options = {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      };
-
-      const response = await fetch(
-        "https://social-network-api.osc-fr1.scalingo.io/demo/posts",
-        options
-      );
-
-      const data = await response.json();
-      this.posttest = data.posts;
-      console.log(response), console.log(data);
-    },
+   
   },
 
   beforeMount() {
     this.recupererUser();
   },
-  mounted() {
-    this.recuperer();
-  },
+//   mounted() {
+//     this.recuperer();
+//   },
 };
 </script>
 
@@ -154,8 +151,9 @@ export default {
   text-align: center;
   color: black;
   margin-top: 60px;
-
-  display: block;
+    display: block;
+    background-color: rgba(0, 0, 0, 0.366);
+    padding: 30px;
 }
 
 .input-container {
@@ -208,7 +206,7 @@ li {
   background-color: rgb(248, 247, 247);
   margin-bottom: 30px;
   margin-top: 10px;
-  padding: 10px;
+
   border-radius: 20px;
   color: black;
 }
@@ -218,14 +216,30 @@ h1 {
   margin: 20px;
 }
 
-#publications {
-  background-color: rgba(0, 0, 0, 0.441);
-  padding: 30px;
-  
+button {
+      margin: 20px;
+  padding: 10px;
+  background-color: black;
+  color: white;
+  border: 0px;
+  border-radius: 5px;
+  font-size: 15px;
+  cursor: pointer;
 }
 
-ul {
-  list-style: none;
+
+
+#coordonnees {
+list-style: none;
+color: black;
 }
+
+#modifProfil {
+    color:black;
+    
+}
+
+
+
 
 </style>
