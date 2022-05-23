@@ -4,7 +4,7 @@
 
     <div id="recupUserContent">
       <h1>coucou {{ emitprop }}</h1>
-      <div v-for="(postt, index) in posttest" :key="postt._id" id="editPost">
+      <div class="post" v-for="(postt, index) in posttest" :key="postt._id" id="editPost">
         <p>{{ postt.title }} {{ postt.firstname }}</p>
         <p>{{ postt.content }}</p>
         <p v-if="postt.filename">
@@ -16,16 +16,18 @@
           />
         </p>
 
-        <p>
-          likes compte{{ postt.likes.length }}comment compte{{
-            postt.comments.length
-          }}
-        </p>
-        <p v-for="like in postt.likes" :key="like._id">{{ likes.firstname }}</p>
+        <div class="likecomment">
+          <div>likes compte{{ postt.likes.length }}</div> 
+          <div>compte{{ postt.comments.length}}</div> 
+        </div>
+        <button @click="like(postt._id)">like</button>
+        <button @click="affichage (postt._id)">comment affichage</button>
+        <div v-if="isDisplay===postt._id" class="commentairepost">
+        <p v-for="like in postt.likes" :key="like._id">prenom du like{{ like.firstname }}</p>
         <p v-for="com in postt.comments" :key="com._id">
           {{ com.content }}{{ com.firstname }}
         </p>
-        <button @click="like(postt._id)">like</button>
+        
         <div>
           <label for="commentaire">commentaire : </label>
           <input
@@ -36,6 +38,7 @@
             required
           />
           <button @click="comment(postt._id, index)">post comment</button>
+          </div>
         </div>
         <!-- <p>{{postt._id}} </p> -->
       </div>
@@ -60,6 +63,7 @@ export default {
       likes: 0,
       isShowDiv: "",
       commentaire: [],
+      isDisplay:null,
     };
   },
   computed: {
@@ -81,6 +85,13 @@ export default {
   },
 
   methods: {
+affichage(b){
+  
+
+if(this.isDisplay === null){
+   this.isDisplay = b} 
+else{this.isDisplay = null}
+},
     likeconsole(a) {
       console.log(a);
     },
@@ -249,5 +260,36 @@ body::-webkit-scrollbar-thumb {
   padding: 10px;
   background-color: #b42f26;
   color: white;
+}
+.post{
+  /* background: rgb(255, 226, 190); */
+  border-radius: 15%;
+  border:solid;
+  border-color: #2c3e50;
+ 
+}
+#editPost{
+ column-gap: 40px;
+ margin: 40px;
+
+}
+.commentairepost{
+  background: rgb(255, 226, 190); 
+  border-radius: 15%;
+  border:solid;
+  border-color: #502c48;
+  column-gap: 40px;
+
+
+}
+
+.likecomment{
+  display: flex;
+border-radius: 15%;
+  border:solid;
+  border-color: #2c502e;
+  column-gap: 40px;
+  justify-content:space-between;
+
 }
 </style>
