@@ -12,7 +12,9 @@
       </div>
 
       <div>
-        <button class="buttonStyle" id="btn2">Mon profil</button>
+        <button @click="$router.push('/Profil/orange')" class="buttonStyle" id="btn1">
+          Mon Profil
+        </button>
       </div>
       <br />
       <br />
