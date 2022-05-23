@@ -4,7 +4,12 @@
 
     <div id="recupUserContent">
       <h1>coucou {{ emitprop }}</h1>
-      <div class="post" v-for="(postt, index) in posttest" :key="postt._id" id="editPost">
+      <div
+        class="post"
+        v-for="(postt, index) in posttest"
+        :key="postt._id"
+        id="editPost"
+      >
         <p>{{ postt.title }} {{ postt.firstname }}</p>
         <p>{{ postt.content }}</p>
         <p v-if="postt.filename">
@@ -17,27 +22,29 @@
         </p>
 
         <div class="likecomment">
-          <div>likes compte{{ postt.likes.length }}</div> 
-          <div>compte{{ postt.comments.length}}</div> 
+          <div>likes compte{{ postt.likes.length }}</div>
+          <div>compte{{ postt.comments.length }}</div>
         </div>
         <button @click="like(postt._id)">like</button>
-        <button @click="affichage (postt._id)">comment affichage</button>
-        <div v-if="isDisplay===postt._id" class="commentairepost">
-        <p v-for="like in postt.likes" :key="like._id">prenom du like{{ like.firstname }}</p>
-        <p v-for="com in postt.comments" :key="com._id">
-          {{ com.content }}{{ com.firstname }}
-        </p>
-        
-        <div>
-          <label for="commentaire">commentaire : </label>
-          <input
-            type="text"
-            id="commentaire"
-            v-model="commentaire[index]"
-            placeholder="Votre commentaire"
-            required
-          />
-          <button @click="comment(postt._id, index)">post comment</button>
+        <button @click="affichage(postt._id)">comment affichage</button>
+        <div v-if="isDisplay === postt._id" class="commentairepost">
+          <p v-for="like in postt.likes" :key="like._id">
+            prenom du like{{ like.firstname }}
+          </p>
+          <p v-for="com in postt.comments" :key="com._id">
+            {{ com.content }}{{ com.firstname }}
+          </p>
+
+          <div>
+            <label for="commentaire">commentaire : </label>
+            <input
+              type="text"
+              id="commentaire"
+              v-model="commentaire[index]"
+              placeholder="Votre commentaire"
+              required
+            />
+            <button @click="comment(postt._id, index)">post comment</button>
           </div>
         </div>
         <!-- <p>{{postt._id}} </p> -->
@@ -63,7 +70,7 @@ export default {
       likes: 0,
       isShowDiv: "",
       commentaire: [],
-      isDisplay:null,
+      isDisplay: null,
     };
   },
   computed: {
@@ -85,13 +92,13 @@ export default {
   },
 
   methods: {
-affichage(b){
-  
-
-if(this.isDisplay === null){
-   this.isDisplay = b} 
-else{this.isDisplay = null}
-},
+    affichage(b) {
+      if (this.isDisplay === null) {
+        this.isDisplay = b;
+      } else {
+        this.isDisplay = null;
+      }
+    },
     likeconsole(a) {
       console.log(a);
     },
@@ -192,7 +199,7 @@ else{this.isDisplay = null}
   font-family: Avenir, Helvetica, Arial, sans-serif;
   text-align: center;
   color: #2c3e50;
- 
+
   overflow-x: hidden;
   overflow-y: scroll;
   border: hidden;
@@ -261,35 +268,48 @@ body::-webkit-scrollbar-thumb {
   background-color: #b42f26;
   color: white;
 }
-.post{
+.post {
   /* background: rgb(255, 226, 190); */
   border-radius: 15%;
-  border:solid;
+  border: solid;
   border-color: #2c3e50;
- 
 }
-#editPost{
- column-gap: 40px;
- margin: 40px;
-
-}
-.commentairepost{
-  background: rgb(255, 226, 190); 
-  border-radius: 15%;
-  border:solid;
-  border-color: #502c48;
+#editPost {
   column-gap: 40px;
-
-
+  margin: 40px;
+  border-top-right-radius: 5%;
+  padding: 10%;
+  border-color: rgba(232, 237, 237, 0.927);
+  background-color: rgb(245, 245, 245);
+  border-style: ridge;
+}
+.commentairepost {
+  background: rgb(255, 226, 190);
+  border: hidden;
+  border-color: #e24dc2;
+  column-gap: 40px;
+  border-bottom-left-radius: 1%;
+  border-top-right-radius: 1%;
+  border-top-left-radius: 1%;
+  border-top-right-radius: 1%;
 }
 
-.likecomment{
+.likecomment {
   display: flex;
-border-radius: 15%;
-  border:solid;
+  /* border:inherit; */
+  border: hidden;
   border-color: #2c502e;
   column-gap: 40px;
-  justify-content:space-between;
-
+  justify-content: space-between;
+}
+body {
+  background: rgb(101, 237, 239);
+  background: linear-gradient(
+    245deg,
+    rgba(101, 237, 239, 0.8158613787311799) 4%,
+    rgba(229, 240, 239, 0.9615196420365021) 22%,
+    rgba(110, 166, 183, 0.8942927512801996) 79%,
+    rgba(224, 239, 237, 0.8914916308320203) 100%
+  );
 }
 </style>

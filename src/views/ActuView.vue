@@ -100,14 +100,20 @@ export default {
   cursor: pointer;
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  letter-spacing: 2px;
+  font-size: medium;
 }
 #btn1:hover {
-  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 10px 5px 0 rgba(0, 0, 0, 0.24),
+    0 30px 50px 0 rgba(0, 0, 0, 0.19);
 }
 #btn2:hover {
-  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 10px 5px 0 rgba(0, 0, 0, 0.24),
+    0 30px 50px 0 rgba(0, 0, 0, 0.19);
 }
 #btn3:hover {
-  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 10px 5px 0 rgba(0, 0, 0, 0.24),
+    0 30px 50px 0 rgba(0, 0, 0, 0.19);
 }
 </style>
