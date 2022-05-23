@@ -1,19 +1,27 @@
 <template>
   <div id="mainContainerRecup">
     <!-- Formulaire de connexion -->
-    
 
     <div id="recupUserContent">
       <h1>coucou {{ emitprop }}</h1>
       <div v-for="(postt, index) in posttest" :key="postt._id" id="editPost">
         <p>{{ postt.title }} {{ postt.firstname }}</p>
         <p>{{ postt.content }}</p>
-        <p v-if=" postt.filename">
-        <img :src="'https://social-network-api.osc-fr1.scalingo.io/media/'+postt.filename" /></p>
-        
-          
-            <p>likes compte{{ postt.likes.length }}comment compte{{ postt.comments.length }}</p>
-           <p v-for="like in postt.likes" :key="like._id" >{{ likes.firstname }}</p>
+        <p v-if="postt.filename">
+          <img
+            :src="
+              'https://social-network-api.osc-fr1.scalingo.io/media/' +
+              postt.filename
+            "
+          />
+        </p>
+
+        <p>
+          likes compte{{ postt.likes.length }}comment compte{{
+            postt.comments.length
+          }}
+        </p>
+        <p v-for="like in postt.likes" :key="like._id">{{ likes.firstname }}</p>
         <p v-for="com in postt.comments" :key="com._id">
           {{ com.content }}{{ com.firstname }}
         </p>
@@ -32,9 +40,7 @@
         <!-- <p>{{postt._id}} </p> -->
       </div>
     </div>
-
   </div>
-  
 </template>
 
 <script>
@@ -178,10 +184,9 @@ export default {
   position: absolute;
   overflow-x: hidden;
   overflow-y: scroll;
-
   border: hidden;
-  width: 90%;
-  height: 100%;
+  width: 100%;
+  height: 320%;
 
   margin-top: 45%;
 }

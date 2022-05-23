@@ -1,21 +1,24 @@
 <template>
   <div>
-    
-<nav>
-    <router-link to="/"> Fil d'actu </router-link>
-    <router-link :to="{ name: 'Profil', params: { id: this.id } }">Profil</router-link>
-    <router-link to="/Login"> Login </router-link>
-</nav>    
-<!-- 
+    <nav>
+      <router-link to="/"> Fil d'actu </router-link>
+      <router-link :to="{ name: 'Profil', params: { id: this.id } }"
+        >Profil</router-link
+      >
+      <router-link to="/Login"> Login </router-link>
+    </nav>
+    <!-- 
     <Deconnecter />
     <RecupUser />
     <Recuperer />
     <Poster /> -->
-    <router-view/>
+    <router-view />
+    <footer id="footer">&copy Le petit Baroudeur</footer>
   </div>
 </template>
 
-// <script>
+//
+<script>
 // import Page from "./components/Page.vue";
 
 // import Recuperer from "./components/Recuperer.vue";
@@ -27,7 +30,6 @@
 export default {
   name: "App",
   components: {
-    
     // Login,
     // Creation,
     // Recuperer,
@@ -38,7 +40,7 @@ export default {
   },
   data() {
     return {
-       id :"orange",
+      id: "orange",
     };
   },
 
@@ -53,6 +55,13 @@ export default {
 <style>
 * {
   margin: 0;
+}
+#footer {
+  background-color: black;
+  color: white;
+  padding: 2%;
+  position: unset;
+  margin-top: 200%;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

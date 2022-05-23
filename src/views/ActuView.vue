@@ -3,13 +3,21 @@
     <NavBar />
     <nav></nav>
     <div id="logInAcc">
-      <button @click="$router.push('/Login')">Connexion</button>
+      <div>
+        <button @click="$router.push('/Login')">Connexion</button>
+      </div>
+      <br />
+      <br />
+      <div>
+        <button>Mon profil</button>
+      </div>
+      <div>
+        <button>Déconnexion</button>
+      </div>
     </div>
-    <Recuperer :emitprop="this.test"  ></Recuperer>
+    <Recuperer :emitprop="this.test"></Recuperer>
     <Deconnect />
-    <Poster @uptadepost="recuperer" ></Poster>
-
-    <footer id="footer">&copy Le petit Baroudeur</footer>
+    <Poster @uptadepost="recuperer"></Poster>
   </div>
 </template>
 
@@ -19,7 +27,6 @@ import Deconnect from "../components/Deconnect.vue";
 import NavBar from "../components/NavBar.vue";
 import Recuperer from "../components/Recuperer.vue";
 export default {
-  
   components: {
     // Login,
     // Creation,
@@ -31,12 +38,11 @@ export default {
   },
   props: {
     emitprop: String,
-    
   },
   data() {
     return {
       isDisplay: true,
-      test:"pasok",
+      test: "pasok",
     };
   },
 
@@ -46,16 +52,14 @@ export default {
     },
   },
 
-   methods: { 
-     recuperer(){
-   alert("coucou");
-   
-  
-   this.test="ok"
-   alert(this.test);
+  methods: {
+    recuperer() {
+      alert("coucou");
 
-     }
-   }
+      this.test = "ok";
+      alert(this.test);
+    },
+  },
 };
 </script>
 
@@ -75,13 +79,6 @@ export default {
   justify-content: flex-end;
 }
 
-#footer {
-  background-color: black;
-  color: white;
-  padding: 2%;
-  position: unset;
-  margin-top: 200%;
-}
 #btn {
   font-family: initial;
   letter-spacing: 1.8px;
