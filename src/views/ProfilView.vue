@@ -156,9 +156,11 @@ header {
   margin-top: -10px;
 }
 
-/* body {
+body {
   background-image: url(../assets/bgCol.jpg);
-} */
+  background-size: cover;
+  background-position: center;
+}
 
 #bandeau {
   background-color: black;
