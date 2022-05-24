@@ -7,7 +7,7 @@
       <nav>
         <ul id="navBarLinks">
           <li id="nomLogo"><img src="../assets/nomLogo.jpg" /></li>
-          <li id="quiSommesNous">Qui sommes nous ?</li>
+          <li id="quiSommesNous"><a href="https://lebocal.academy/" target="_blank"> Qui sommes nous ?</a></li>
           <li id="vol">
             <font-awesome-icon icon="plane" />
             <br />

@@ -24,7 +24,7 @@
           <!-- Formulaire de connexion -->
           <ModifUser />
           <br>
-          <form id="creation" @submit.prevent="poster">
+          <form id="creation" @submit.prevent>
             <h3>Partagez vos expériences !</h3>
             <div class="input-container">
               <br />
