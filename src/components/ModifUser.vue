@@ -235,7 +235,7 @@ color: black;
 }
 
 #modifProfil {
-    color:black;
+    color:white;
     
 }
 

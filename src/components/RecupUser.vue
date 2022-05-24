@@ -154,7 +154,7 @@ export default {
   text-align: center;
   color: black;
   margin-top: 60px;
-
+  
   display: block;
 }
 

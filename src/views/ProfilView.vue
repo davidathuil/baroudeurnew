@@ -182,7 +182,7 @@ button {
 }
 
 #creation {
-  color: black;
+  color: white;
   background-color: rgba(0, 0, 0, 0.435);
   padding: 20px;
   margin: 20px;;
