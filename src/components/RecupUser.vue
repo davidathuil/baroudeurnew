@@ -8,11 +8,19 @@
       <li v-for="(postt, index) in filteredpostuser" :key="postt._id">
         <p>{{ postt.title }} {{ postt.firstname }}</p>
         <p>{{ postt.content }}</p>
-        <p>{{ postt.likes.length }}</p>
-        <p v-for="like in postt.likes">{{ likes.firstname }}</p>
+        <p v-if="postt.filename">
+          <img class="postimg"
+            :src="
+              'https://social-network-api.osc-fr1.scalingo.io/media/' +
+              postt.filename
+            "
+          />
+        </p>
+        <p>{{ postt.likes.length }} likes</p>
+        <p v-for="like in postt.likes" :key="like._id">{{ likes.firstname }}</p>
 
-        <p v-for="com in postt.comments">
-          {{ com.content }}{{ com.firstname }}
+        <p v-for="com in postt.comments" :key="com._id">
+         {{ com.firstname }} a commenté: {{ com.content }}
         </p>
 
         <button @click="like(postt._id)">like</button>
@@ -157,7 +165,9 @@ export default {
   
   display: block;
 }
-
+.postimg{
+  width: 100%;
+}
 .input-container {
   margin: 10px;
   display: flex;

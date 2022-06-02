@@ -19,12 +19,14 @@
       <br />
       <br />
       <div>
-        <button class="buttonStyle" id="btn3">Déconnexion</button>
+        <button @click="Deconnecteremit" class="buttonStyle" id="btn3">Déconnexion</button>
       </div>
     </div>
-    <Recuperer :emitprop="this.test"></Recuperer>
-    <Deconnect />
     <Poster @uptadepost="recuperer"></Poster>
+    <Deconnect />
+    <Recuperer :emitprop="this.test"></Recuperer>
+    
+    
   </div>
 </template>
 
@@ -50,6 +52,7 @@ export default {
     return {
       isDisplay: true,
       test: "pasok",
+      test1:"testdeconnectdanscomposantdeconnect",
     };
   },
 
@@ -61,11 +64,18 @@ export default {
 
   methods: {
     recuperer() {
-      alert("coucou");
-
+      
       this.test = "ok";
-      alert(this.test);
+      // alert(this.test);
     },
+  Deconnecteremit() {
+      
+      localStorage.removeItem("token");
+    
+      this.test1 = "deconnect";
+      // alert(this.test);
+    },
+
   },
 };
 </script>
@@ -118,4 +128,11 @@ export default {
   box-shadow: 0 10px 5px 0 rgba(0, 0, 0, 0.24),
     0 30px 50px 0 rgba(0, 0, 0, 0.19);
 }
+#title {
+  border-top-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
 </style>

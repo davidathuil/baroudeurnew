@@ -24,51 +24,7 @@
           <!-- Formulaire de connexion -->
           <ModifUser />
           <br>
-          <form id="creation" @submit.prevent>
-            <h3>Partagez vos expériences !</h3>
-            <div class="input-container">
-              <br />
-              <input
-                type="text"
-                name="title"
-                id="title"
-                v-model="title"
-                placeholder="Titre de votre commentaire"
-              />
-            </div>
-            <br />
-
-            <div class="input-container">
-              <label for="content">Commente ta publication : </label>
-              <br />
-              <input
-                type="text"
-                name="content"
-                id="content"
-                v-model="content"
-                placeholder="Votre post"
-              />
-            </div>
-
-            <br />
-            <div class="input-container">
-              <label for="content">Ajoute une photo à ton post ! </label>
-              <br />
-              <br />
-              <input
-                id="fichier"
-                type="file"
-                name="file"
-                accept="image/png, image/jpg, image/gif"
-              />
-            </div>
-            <br />
-              <br />
-
-            <button @click="poster">Ajouter</button>
-            <button @click="test">test</button>
-          </form>
-       
+          <Poster @uptadepost="recuperer"></Poster>     
           <RecupUser />
         </div>
       </section>
@@ -78,7 +34,7 @@
 
 <script>
 import RecupUser from "../components/RecupUser.vue";
-
+import Poster from "../components/Poster.vue";
 import ModifUser from "../components/ModifUser.vue";
 
 export default {
@@ -86,18 +42,27 @@ export default {
   components: {
     RecupUser,
     ModifUser,
+    Poster,
   },
   data() {
     return {
       token: localStorage.getItem("token"),
       title: "",
       content: "",
-
+      test: "pasok",
       idPost: "",
     };
   },
 
   methods: {
+
+ recuperer() {
+      
+      this.test = "ok";
+      // alert(this.test);
+    },
+
+
     async poster() {
       const options = {
         method: "POST",
@@ -175,6 +140,10 @@ body {
   margin: 10px;
   text-align: center;
   display: block;
+  width: 100%;
+}
+.postimg{
+  width: 100%;
 }
 
 button {

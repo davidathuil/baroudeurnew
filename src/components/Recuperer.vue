@@ -3,7 +3,7 @@
     <!-- Formulaire de connexion -->
 
     <div id="recupUserContent">
-      <h1>coucou {{ emitprop }}</h1>
+      <h1 class="cache">coucou {{ emitprop }}</h1>
       <div
         class="post"
         v-for="(postt, index) in posttest"
@@ -13,7 +13,7 @@
         <p>{{ postt.title }} {{ postt.firstname }}</p>
         <p>{{ postt.content }}</p>
         <p v-if="postt.filename">
-          <img
+          <img class="postimg"
             :src="
               'https://social-network-api.osc-fr1.scalingo.io/media/' +
               postt.filename
@@ -22,14 +22,14 @@
         </p>
 
         <div class="likecomment">
-          <div>likes compte{{ postt.likes.length }}</div>
-          <div>compte{{ postt.comments.length }}</div>
+          <div>{{ postt.likes.length }} likes</div>
+          <div>{{ postt.comments.length }} commentaire</div>
         </div>
         <button @click="like(postt._id)">like</button>
         <button @click="affichage(postt._id)">comment affichage</button>
         <div v-if="isDisplay === postt._id" class="commentairepost">
           <p v-for="like in postt.likes" :key="like._id">
-            prenom du like{{ like.firstname }}
+            {{ like.firstname }} a commenté:
           </p>
           <p v-for="com in postt.comments" :key="com._id">
             {{ com.content }}{{ com.firstname }}
@@ -158,6 +158,7 @@ export default {
       // this.likes=data.posts.likes
       console.log(response);
       console.log(data);
+      this.recuperer();
     },
     async like(a) {
       const options = {
@@ -181,6 +182,7 @@ export default {
       // this.likes=data.posts.likes
       console.log(response);
       console.log(data);
+      this.recuperer();
     },
   },
 
@@ -206,7 +208,7 @@ export default {
   width: 100%;
   height: 320%;
 
-  margin-top: 45%;
+  margin-top: 5%;
 }
 
 body::-webkit-scrollbar {
@@ -274,6 +276,9 @@ body::-webkit-scrollbar-thumb {
   border: solid;
   border-color: #2c3e50;
 }
+.cache{
+   display:none
+}
 #editPost {
   column-gap: 40px;
   margin: 40px;
@@ -282,6 +287,12 @@ body::-webkit-scrollbar-thumb {
   border-color: rgba(232, 237, 237, 0.927);
   background-color: rgb(245, 245, 245);
   border-style: ridge;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+.postimg{
+  width: 100%;
 }
 .commentairepost {
   background: rgb(255, 226, 190);

@@ -114,13 +114,16 @@ test(){
 #mainContainerPoster {
   font-family: Avenir, Helvetica, Arial, sans-serif;
 
-     display: inline-flex;
+     
+margin: 10px;
+  text-align: center;
+  display: block;
+ 
+ 
 
- 
- 
-  padding-left: 33%;
   
 }
+  
 
 .input-container {
   margin: 10px;
@@ -166,5 +169,34 @@ test(){
   padding: 10px;
   background-color: #b42f26;
   color: white;
+}
+#content {
+  padding: 50px 130px;
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+#creation {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.435);
+  padding: 20px;
+  margin: 20px;;
+}
+#title {
+  border-top-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-top-right-radius: 10px;
+  
+  margin-left:10%;
+  margin-right:10%;
+  height: 50px;
+}
+#profilPost {
+  margin-left: 20%;
+  margin-right: 20%;
+ display: flex;
+  margin-top: -10px;
 }
 </style>
